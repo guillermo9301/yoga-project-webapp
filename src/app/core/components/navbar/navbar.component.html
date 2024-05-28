@@ -7,8 +7,42 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" [routerLink]="['/auth/login']"
-                routerLinkActive="active">Login</a>
+                routerLinkActive="active">Somos</a>
         </li>
-        <!-- Otros enlaces -->
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/auth/login']"
+                routerLinkActive="active">Estamos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/auth/login']"
+                routerLinkActive="active">Clases</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/auth/login']"
+                routerLinkActive="active">Ven y prueba</a>
+        </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/auth/login']"
+                routerLinkActive="active">
+                <fa-icon [icon]="faUser"></fa-icon>
+                Login
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <span class="badge badge-danger navbar-badge">3</span>
+                Notificaciones
+                <fa-icon [icon]="faComments" />
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <fa-icon [icon]="faRightFromBracket" />
+            </a>
+        </li>
+
     </ul>
 </nav>

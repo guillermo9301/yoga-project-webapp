@@ -12,28 +12,30 @@
     <body class="hold-transition login-page">
         <div class="login-box">
             <div class="login-logo">
-                <a href="../../index2.html"><b>Administrador</b> One Love
-                    Yoga</a>
+                <a href="../../index2.html"><b>One Love
+                        Yoga</b> </a>
             </div>
             <!-- /.login-logo -->
             <div class="card">
                 <div class="card-body login-card-body">
-                    <p class="login-box-msg">Iniciar sesion como
-                        administrador</p>
+                    <p class="login-box-msg">Iniciar sesion</p>
 
-                    <form>
+                    <form (ngSubmit)="login()">
                         <div class="input-group mb-3">
-                            <input type="email" class="form-control"
-                                placeholder="Email">
+                            <input type="email" id="email"
+                                placeholder="Email" [(ngModel)]="email"
+                                name="email" class="form-control" required>
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-envelope"></span>
                                 </div>
                             </div>
                         </div>
+
                         <div class="input-group mb-3">
-                            <input type="password" class="form-control"
-                                placeholder="Password">
+                            <input type="password" id="password"
+                                placeholder="Password" [(ngModel)]="password"
+                                name="password" class="form-control" required>
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <span class="fas fa-lock"></span>
@@ -44,7 +46,7 @@
 
                             <!-- /.col -->
                             <div class="col-4">
-                                <button type="button" (click)="login()"
+                                <button type="submit"
                                     class="btn btn-primary btn-block">Acceder
                                 </button>
                             </div>
