@@ -1,1 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+/* Estilos de validacion de formularios */
+.ng-valid:not(form).ng-touched {
+    border-left: 5px solid #28a745
+}
+
+.ng-invalid:not(form).ng-touched {
+    border-left: 5px solid #dc3545;
+}
+
+
+/* Personalización de las notificaciones toastr */
+.toast-success {
+    background-color: #28a745 !important;
+    color: white;
+}
+
+.toast-error {
+    background-color: #dc3545 !important;
+    color: white;
+}
+
+/* Personalización de la posición */
+#toast-container>.toast-top-right {
+    top: 12px;
+    right: 12px;
+}
+
+/*NAV-BAR*/
+.avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}

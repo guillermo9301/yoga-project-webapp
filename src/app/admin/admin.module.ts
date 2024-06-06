@@ -3,16 +3,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { AdminRoutingModule } from './admin-routing.module';
-import { RegistrarAlumnoComponent } from './registrar-alumno/registrar-alumno.component';
+import { UsersComponent } from './users/users.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
     declarations: [
         HomeAdminComponent,
-        RegistrarAlumnoComponent
+        UsersComponent
     ],
     imports: [
         CommonModule,
-        AdminRoutingModule
+        AdminRoutingModule,
+        FontAwesomeModule
     ]
 })
 export class AdminModule { }
