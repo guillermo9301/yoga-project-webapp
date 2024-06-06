@@ -1,0 +1,105 @@
+
+<div class="card card-info">
+    <div class="card-header">
+        <h3 class="card-title">Registro</h3>
+    </div>
+    <!-- /.card-header -->
+    <!-- form start -->
+    <form class="form-horizontal" (ngSubmit)="onSubmit()">
+        <div class="card-body">
+
+            <div class="form-group row">
+                <label for="inputEmail3"
+                    class="col-sm-2 col-form-label">Nombre</label>
+                <div class="col-sm-10">
+                    <input type="nombre" class="form-control" id="inputnombre3"
+                        placeholder="Nombre" [(ngModel)]="alumno.nombre"
+                        name="nombre">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="inputPassword3"
+                    class="col-sm-2 col-form-label">Apellido Paterno</label>
+                <div class="col-sm-10">
+                    <input type="apellidoPaterno" class="form-control"
+                        id="inputApellidoPaterno3"
+                        placeholder="Apellido Paterno"
+                        [(ngModel)]="alumno.apellido_paterno"
+                        name="apellido_paterno">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="inputPassword3"
+                    class="col-sm-2 col-form-label">Apellido Materno</label>
+                <div class="col-sm-10">
+                    <input type="apellidoMaterno" class="form-control"
+                        id="inputApellidoMaterno3"
+                        placeholder="Apellido Materno"
+                        [(ngModel)]="alumno.apellido_materno"
+                        name="apellido_materno">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="inputPassword3"
+                    class="col-sm-2 col-form-label">Correo</label>
+                <div class="col-sm-10">
+                    <input type="correo" class="form-control" id="inputCorreo3"
+                        placeholder="Correo" [(ngModel)]="alumno.correo"
+                        name="correo">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="inputPassword3"
+                    class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control"
+                        id="inputPassword3" placeholder="Password"
+                        [(ngModel)]="alumno.password" name="password">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="inputPassword3"
+                    class="col-sm-2 col-form-label">Fecha de Nacimiento</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control"
+                        id="inputFechaNacimiento3"
+                        placeholder="Fecha de Nacimiento"
+                        [(ngModel)]="alumno.fec_nacimiento"
+                        name="fec_nacimiento">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="inputPassword3"
+                    class="col-sm-2 col-form-label">DNI</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" id="inputDni3"
+                        placeholder="DNI" [(ngModel)]="alumno.nro_documento"
+                        name="nro_documento">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="inputPassword3"
+                    class="col-sm-2 col-form-label">Celular</label>
+                <div class="col-sm-10">
+                    <input type="tel" class="form-control"
+                        id="inputCelular3" placeholder="Celular"
+                        [(ngModel)]="alumno.celular" name="celular">
+                </div>
+            </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+            <button type="submit" class="btn btn-info">Crear cuenta</button>
+            <button type="submit"
+                class="btn btn-default float-right">Cancel</button>
+        </div>
+        <!-- /.card-footer -->
+    </form>
+</div>
