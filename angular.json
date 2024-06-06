@@ -28,15 +28,8 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
-              "src/styles.css",
-              "node_modules/admin-lte/dist/css/adminlte.min.css"
-            ],
-            "scripts": [
-              "node_modules/admin-lte/plugins/jquery/jquery.min.js",
-              "node_modules/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js",
-              "node_modules/admin-lte/dist/js/adminlte.js"
-            ]
+            "styles": [],
+            "scripts": []
           },
           "configurations": {
             "production": {
