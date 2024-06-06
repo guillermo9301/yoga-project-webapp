@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RegisterRequest } from 'src/app/core/interfaces/registerRequest';
 import { AuthService } from 'src/app/core/services/auth.service';
 import Swal from 'sweetalert2';
 
@@ -30,7 +31,7 @@ export class RegistroAlumnoComponent implements OnInit {
         correo: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(8)]],
         fec_nacimiento: [''],
-        tipo_documento: ['', Validators.required],
+        id_tipo_documento: ['', Validators.required],
         nro_documento: ['', Validators.required],
         celular: ['']
     })
@@ -67,7 +68,7 @@ export class RegistroAlumnoComponent implements OnInit {
     }
 
     get tipo_documento() {
-        return this.registerForm.controls.tipo_documento
+        return this.registerForm.controls.id_tipo_documento
     }
 
     get nro_documento() {
@@ -80,16 +81,27 @@ export class RegistroAlumnoComponent implements OnInit {
 
 
     onSubmit() {
+        console.log(this.registerForm)
         if (this.registerForm.valid) {
-            console.log("llamar al servicio de registrar alumno")
-            // Muestra swettalert de exito
-            Swal.fire({
-                icon: 'success',
-                title: 'Registro exitoso',
-                text: 'Se realizó el registro exitosamente'
+            this.authService.register(this.registerForm.value as RegisterRequest).subscribe({
+                next: (registerData) => {
+                    console.log(registerData)
+                },
+                error: (errorData) => {
+                    console.error(errorData)
+                },
+                complete: () => {
+                    // Muestra swettalert de exito
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Registro exitoso',
+                        text: 'Se realizó el registro exitosamente'
+                    })
+                    console.info("Registro completo")
+                    this.registerForm.reset()
+                    this.router.navigateByUrl('/')
+                },
             })
-            this.router.navigateByUrl('/')
-            this.registerForm.reset()
         } else {
             Swal.fire({
                 icon: 'error',
@@ -98,7 +110,6 @@ export class RegistroAlumnoComponent implements OnInit {
             })
             this.registerForm.markAllAsTouched()
         }
-
     }
 
     cancel() {

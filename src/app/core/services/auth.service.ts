@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject, Observable, catchError, tap, throwError } from 'rxjs';
 import { LoginRequest } from '../interfaces/loginRequest';
 import { User } from '../interfaces/user';
+import { RegisterRequest } from '../interfaces/registerRequest';
 
 @Injectable({
     providedIn: 'root'
@@ -41,7 +42,7 @@ export class AuthService {
         )
     }
 
-    register(data: any): Observable<any> {
+    register(data: RegisterRequest): Observable<any> {
         return this.http.post(`${this.apiUrl}/register`, data);
     }
 
