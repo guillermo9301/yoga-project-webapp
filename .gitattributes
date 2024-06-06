@@ -1,4 +1,2 @@
-# Exclude JavaScript files in node_modules and build directories from language statistics
-node_modules/* linguist-vendored
-build/* linguist-generated
-dist/* linguist-generated
+*.ts linguist-language=TypeScript
+
