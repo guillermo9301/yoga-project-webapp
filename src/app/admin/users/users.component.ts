@@ -10,15 +10,22 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 })
 export class UsersComponent implements OnInit {
   faSearch = faSearch
-
   usersList: Usuario[] = []
 
   constructor(private userService: UserService) { }
+
+  getFullName(row: any): string {
+    return `${row.apellido_paterno} ${row.apellido_materno}`;
+  }
 
   ngOnInit(): void {
     this.userService.getAllUsers().subscribe({
       next: (data) => {
         this.usersList = data
+        console.log(data)
+      },
+      error: (error) => {
+        console.error('Error fetching users', error);
       }
     })
   }
