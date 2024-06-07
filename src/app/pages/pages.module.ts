@@ -3,22 +3,26 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { PagesRoutingModule } from './pages-routing.module';
-import { SomosComponent } from './somos/somos.component';
-import { EstamosComponent } from './estamos/estamos.component';
+
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
 import { ClasesComponent } from './clases/clases.component';
-import { VenpruebaComponent } from './venprueba/venprueba.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 @NgModule({
     declarations: [
         HomeComponent,
-        SomosComponent,
-        EstamosComponent,
+
+        AboutComponent,
+        ContactComponent,
         ClasesComponent,
-        VenpruebaComponent
+        CalendarComponent
     ],
     imports: [
         CommonModule,
-        PagesRoutingModule
+        PagesRoutingModule,
+        FullCalendarModule
     ]
 })
 export class PagesModule { }

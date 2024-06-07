@@ -1,0 +1,46 @@
+
+<div class="hero-wrap">
+    <div class="card-header">
+        <h3 class="card-title">Responsive Hover Table</h3>
+        <div class="card-tools">
+            <div class="input-group input-group-sm" style="width: 150px;">
+                <input type="text" name="table_search"
+                    class="form-control float-right" placeholder="Search">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-default">
+                        <fa-icon [icon]="faSearch"></fa-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body table-responsive p-0">
+        <table class="table table-hover text-nowrap">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido Paterno</th>
+                    <th>Apellido Materno</th>
+                    <th>Correo</th>
+                    <th>Rol</th>
+                    <th>Documento</th>
+                    <th>Celular</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of usersList">
+                    <td>{{user.id}}</td>
+                    <td>{{user.nombre}}</td>
+                    <td>{{user.apellido_paterno}}</td>
+                    <td>{{user.apellido_materno}}</td>
+                    <td>{{user.correo}}</td>
+                    <td>{{user.rol}}</td>
+                    <td>{{user.nro_documento}}</td>
+                    <td>{{user.celular}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

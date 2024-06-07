@@ -1,1 +1,49 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900");
+@import url("https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false");
+
+
+
+/* Estilos de validacion de formularios */
+.ng-valid:not(form).ng-touched {
+    border-left: 5px solid #28a745
+}
+
+.ng-invalid:not(form).ng-touched {
+    border-left: 5px solid #dc3545;
+}
+
+
+/* Personalización de las notificaciones toastr */
+.toast-success {
+    background-color: #28a745 !important;
+    color: white;
+}
+
+.toast-error {
+    background-color: #dc3545 !important;
+    color: white;
+}
+
+#toast-container>.toast-top-right {
+    top: 12px;
+    right: 12px;
+}
+
+/*NAV-BAR*/
+.avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+
+.navbar {
+    position: static !important;
+    top: 0 !important;
+    width: 100% !important;
+    z-index: 1000 !important;
+}
+
+.hero-wrap {
+    padding-top: 60px !important;
+}

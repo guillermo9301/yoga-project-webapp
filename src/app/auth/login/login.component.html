@@ -12,7 +12,7 @@
     <body class="hold-transition login-page">
         <div class="login-box">
             <div class="login-logo">
-                <a href="../../index2.html"><b>One Love
+                <a [routerLink]="['/']"><b>One Love
                         Yoga</b> </a>
             </div>
             <!-- /.login-logo -->
@@ -20,33 +20,57 @@
                 <div class="card-body login-card-body">
                     <p class="login-box-msg">Iniciar sesion</p>
 
-                    <form (ngSubmit)="login()">
-                        <div class="input-group mb-3">
-                            <input type="email" id="email"
-                                placeholder="Email" [(ngModel)]="email"
-                                name="email" class="form-control" required>
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-envelope"></span>
+                    <form [formGroup]="loginForm">
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <input type="email" id="correo"
+                                    placeholder="Email"
+                                    formControlName="correo"
+                                    class="form-control" required>
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <fa-icon [icon]="faEnvelope"></fa-icon>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-danger"
+                                *ngIf="correo.invalid && (correo.dirty || correo.touched)">
+                                <div
+                                    *ngIf="correo.errors?.['required']">Debe
+                                    ingresar su correo</div>
+                                <div
+                                    *ngIf="correo.errors?.['email']">
+                                    Debe tener un formato de correo
                                 </div>
                             </div>
                         </div>
 
-                        <div class="input-group mb-3">
-                            <input type="password" id="password"
-                                placeholder="Password" [(ngModel)]="password"
-                                name="password" class="form-control" required>
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-lock"></span>
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <input type="password" id="password"
+                                    placeholder="Password"
+                                    formControlName="password"
+                                    class="form-control"
+                                    required>
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <fa-icon [icon]="faLock"></fa-icon>
+                                    </div>
                                 </div>
                             </div>
+                            <div
+                                *ngIf="password.invalid && (password.dirty || password.touched)"
+                                class="text-danger">
+                                <div *ngIf="password.errors?.['required']">Debe
+                                    ingresar su password</div>
+                            </div>
                         </div>
+
                         <div class="row">
 
                             <!-- /.col -->
                             <div class="col-4">
-                                <button type="submit"
+                                <button type="submit" (click)="login()"
                                     class="btn btn-primary btn-block">Acceder
                                 </button>
                             </div>

@@ -7,9 +7,10 @@ import { NavbarComponent } from './core/components/navbar/navbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
-import { FormsModule } from '@angular/forms';
-import { GoogleMapsModule } from '@angular/google-maps';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 
 @NgModule({
@@ -23,7 +24,10 @@ import { GoogleMapsModule } from '@angular/google-maps';
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
-    GoogleMapsModule
+    BrowserAnimationsModule,
+    SweetAlert2Module.forRoot(),
+    ReactiveFormsModule,
+    FullCalendarModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
