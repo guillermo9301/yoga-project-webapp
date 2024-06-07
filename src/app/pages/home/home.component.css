@@ -1,0 +1,88 @@
+/* home.component.css */
+.home-container {
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background: url('/assets/images/yoga-banner.jpg') no-repeat center center;
+    background-size: cover;
+    color: white;
+    text-align: center;
+    padding: 150px 0;
+}
+
+.header-content h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+.header-content p {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.header-content .cta-button {
+    background: #ff7e5f;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.about-us,
+.classes-schedule,
+.testimonials,
+.instructors,
+.contact {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.classes-grid,
+.testimonials-grid,
+.instructors-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.class-item,
+.testimonial-item,
+.instructor-item {
+    width: 30%;
+    margin: 20px 0;
+}
+
+.instructor-item img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact form input,
+.contact form textarea {
+    width: 50%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.contact form button {
+    background: #ff7e5f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
