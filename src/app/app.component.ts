@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
 
 
 
@@ -7,34 +7,21 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   title = 'yoga-project-webapp';
-  constructor() {}
-      
-    ngOnInit(): void {}
-  
-    display: any;
-    center: google.maps.LatLngLiteral = {
-        lat: 22.2736308,
-        lng: 70.7512555
-    };
-    zoom = 6;
-  
-    /*------------------------------------------
-    --------------------------------------------
-    moveMap()
-    --------------------------------------------
-    --------------------------------------------*/
-    moveMap(event: google.maps.MapMouseEvent) {
-        if (event.latLng != null) this.center = (event.latLng.toJSON());
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    this.loadFacebookSDK();
+
+  }
+
+  loadFacebookSDK(): void {
+    if ((window as any).FB) {
+      (window as any).FB.XFBML.parse();
     }
-  
-    /*------------------------------------------
-    --------------------------------------------
-    move()
-    --------------------------------------------
-    --------------------------------------------*/
-    move(event: google.maps.MapMouseEvent) {
-        if (event.latLng != null) this.display = event.latLng.toJSON();
-    }
+  }
 }
