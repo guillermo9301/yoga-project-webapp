@@ -6,12 +6,14 @@ import { LoginComponent } from './login/login.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { RegistroAlumnoComponent } from './registro-alumno/registro-alumno.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PasswordRecoveryComponent } from './password-recovery/password-recovery.component';
 
 
 @NgModule({
     declarations: [
         LoginComponent,
-        RegistroAlumnoComponent
+        RegistroAlumnoComponent,
+        PasswordRecoveryComponent
 
     ],
     imports: [
