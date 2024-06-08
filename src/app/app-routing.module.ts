@@ -6,6 +6,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ClasesComponent } from './pages/clases/clases.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
+import { ReservationComponent } from './pages/reservation/reservation.component';
 const routes: Routes = [
   { path: '', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule) },
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'clases', component: ClasesComponent },
   { path: 'calendario', component: CalendarComponent },
+  { path: 'reserva', component: ReservationComponent },
 ];
 
 @NgModule({

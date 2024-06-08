@@ -9,6 +9,8 @@ import { ContactComponent } from './contact/contact.component';
 import { ClasesComponent } from './clases/clases.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { ReservationComponent } from './reservation/reservation.component';
+import { FooterComponent } from '../core/components/footer/footer.component';
 
 @NgModule({
     declarations: [
@@ -17,7 +19,9 @@ import { FullCalendarModule } from '@fullcalendar/angular';
         AboutComponent,
         ContactComponent,
         ClasesComponent,
-        CalendarComponent
+        CalendarComponent,
+        ReservationComponent,
+        FooterComponent
     ],
     imports: [
         CommonModule,

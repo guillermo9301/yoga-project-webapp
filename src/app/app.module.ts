@@ -11,12 +11,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { FooterComponent } from './core/components/footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    FooterComponent
+
   ],
   imports: [
     BrowserModule,

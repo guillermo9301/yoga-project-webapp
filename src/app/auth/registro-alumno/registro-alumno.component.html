@@ -1,42 +1,40 @@
-<div class="login-logo">
-    <a routerLink="/"><b>One Love Yoga</b></a>
-</div>
 
 <div class="card card-info">
     <div class="card-header">
-        <h3 class="card-title">Registro</h3>
+        <h3 class="mb-3 text-center">Registro</h3>
     </div>
     <!-- /.card-header -->
 
     <!-- form start -->
-    <form [formGroup]="registerForm">
-        <div class="card-body">
+    <form [formGroup]="registerForm" class="contact-form  d-flex flex-column align-items-center">
+        <div class="card-body  w-100 ">
 
             <div class="mb-3">
                 <div class="form-group row">
                     <label for="inputNombre"
-                        class="col-sm-2 col-form-label">Nombre</label>
-                    <div class="col-sm-10">
+                        class="col-sm-2 col-form-label label-rosado">Nombre</label>
+                    <div class="col-sm-6">
                         <input type="text" class="form-control"
                             id="inputnombre3"
                             placeholder="Nombre"
                             formControlName="nombre">
                     </div>
                 </div>
-                <div class="text-danger"
+                <div class="text-danger  "
                     *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
                     <div
                         *ngIf="nombre.errors?.['required']">Debe
                         ingresar su nombre</div>
                 </div>
+           
             </div>
 
             <div class="mb-3">
                 <div class="form-group row">
                     <label for="apellidoPaterno"
-                        class="col-sm-2 col-form-label">Apellido
+                        class="col-sm-2 col-form-label label-rosado">Apellido
                         Paterno</label>
-                    <div class="col-sm-10">
+                    <div class="col-sm-6">
                         <input type="text" class="form-control"
                             id="inputApellidoPaterno3"
                             placeholder="Apellido Paterno"
@@ -54,9 +52,9 @@
             <div class="mb-3">
                 <div class="form-group row">
                     <label for="apellidoMaterno"
-                        class="col-sm-2 col-form-label">Apellido
+                        class="col-sm-2 col-form-label label-rosado">Apellido
                         Materno</label>
-                    <div class="col-sm-10">
+                    <div class="col-sm-6">
                         <input type="text" class="form-control"
                             id="inputApellidoMaterno3"
                             placeholder="Apellido Materno"
@@ -74,8 +72,8 @@
             <div class="mb-3">
                 <div class="form-group row">
                     <label for="correo"
-                        class="col-sm-2 col-form-label">Correo</label>
-                    <div class="col-sm-10">
+                        class="col-sm-2 col-form-label label-rosado">Correo</label>
+                    <div class="col-sm-6">
                         <input type="email" class="form-control"
                             id="inputCorreo3"
                             placeholder="Correo"
@@ -97,8 +95,8 @@
             <div class="mb-3">
                 <div class="form-group row">
                     <label for="inputPassword3"
-                        class="col-sm-2 col-form-label">Password</label>
-                    <div class="col-sm-10">
+                        class="col-sm-2 col-form-label label-rosado">Password</label>
+                    <div class="col-sm-6">
                         <input type="password" class="form-control"
                             id="inputPassword3" placeholder="Password"
                             formControlName="password">
@@ -119,9 +117,9 @@
             <div class="mb-3">
                 <div class="form-group row">
                     <label for="id_tipo_documento"
-                        class="col-sm-2 col-form-label">Tipo de
+                        class="col-sm-2 col-form-label label-rosado">Tipo de
                         Documento</label>
-                    <div class="col-sm-10">
+                    <div class="col-sm-6">
                         <select id="id_tipo_documento"
                             formControlName="id_tipo_documento"
                             class="form-control">
@@ -143,10 +141,10 @@
             <div class="mb-3">
                 <div class="form-group row">
                     <label for="nroDocumento"
-                        class="col-sm-2 col-form-label">Nro. de
+                        class="col-sm-2 col-form-label label-rosado">Nro. de
                         Documento</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control"
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Nro Documento"
                             id="inputNroDocumento"
                             formControlName="nro_documento">
                     </div>
@@ -162,9 +160,9 @@
             <div class="mb-3">
                 <div class="form-group row">
                     <label for="fechaNacimiento"
-                        class="col-sm-2 col-form-label">Fecha de
+                        class="col-sm-2 col-form-label label-rosado">Fecha de
                         Nacimiento</label>
-                    <div class="col-sm-10">
+                    <div class="col-sm-6">
                         <input type="date" class="form-control"
                             id="inputFechaNacimiento3"
                             placeholder="Fecha de Nacimiento"
@@ -181,8 +179,8 @@
 
             <div class="form-group row">
                 <label for="celular"
-                    class="col-sm-2 col-form-label">Celular</label>
-                <div class="col-sm-10">
+                    class="col-sm-2 col-form-label label-rosado">Celular</label>
+                <div class="col-sm-6" >
                     <input type="tel" class="form-control"
                         id="inputCelular3" placeholder="Celular"
                         formControlName="celular">
@@ -190,13 +188,17 @@
             </div>
         </div>
         <!-- /.card-body -->
-        <div class="card-footer">
-            <button type="submit" (click)="onSubmit()"
-                class="btn btn-info">Crear cuenta</button>
-            <button type="submit"
-                class="btn btn-default float-right"
-                (click)="cancel()">Cancel</button>
-        </div>
-        <!-- /.card-footer -->
+      
     </form>
+
+    <div class="card-footer d-flex justify-content-center gap-3">
+        <button type="submit" (click)="onSubmit()"
+        class="btn btn-primary py-3 px-4">Crear cuenta</button>
+        
+        <button type="submit"
+        class="btn btn-primary  py-3 px-4"
+            (click)="cancel()">Cancelar</button>
+            
+    </div>
+    <!-- /.card-footer -->
 </div>
