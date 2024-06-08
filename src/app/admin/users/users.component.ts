@@ -35,7 +35,8 @@ export class UsersComponent implements OnInit {
 
   openEditModal(userId: number): void {
     const dialogRef = this.dialog.open(UserDetailsComponent, {
-      width: '400px',
+      width: '70%',
+      height: '80%',
       data: { id: userId }
     })
 

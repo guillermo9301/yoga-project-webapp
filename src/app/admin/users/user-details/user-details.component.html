@@ -1,16 +1,100 @@
-<h2 mat-dialog-title>Editar Usuario</h2>
-<div mat-dialog-content>
-    <form>
-        <mat-form-field>
-            <mat-label>Nombre</mat-label>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Email</mat-label>
-        </mat-form-field>
-        <!-- Otros campos de usuario -->
-    </form>
-</div>
-<div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">Cancelar</button>
-    <button mat-button [mat-dialog-close]="data">Guardar</button>
+<div class="modal-content">
+    <div class="modal-header">
+        <h2>Editar Usuario</h2>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="userForm"
+            class="contact-form  d-flex flex-column">
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="nombre"
+                        class="col-sm-2 col-form-label label-rosado">Nombre</label>
+                    <div class="col sm-6">
+                        <input type="text" class="form-control"
+                            placeholder="Nombre"
+                            formControlName="nombre">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="apellido_paterno"
+                        class="col-sm-2 col-form-label label-rosado">Apellido
+                        Paterno</label>
+                    <div class="col sm-6">
+                        <input type="text" class="form-control"
+                            placeholder="apellido_paterno"
+                            formControlName="apellido_paterno">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="apellido_materno"
+                        class="col-sm-2 col-form-label label-rosado">Apellido
+                        Materno</label>
+                    <div class="col sm-6">
+                        <input type="text" class="form-control"
+                            placeholder="apellido_materno"
+                            formControlName="apellido_materno">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="correo"
+                        class="col-sm-2 col-form-label label-rosado">Correo</label>
+                    <div class="col sm-6">
+                        <input type="text" class="form-control"
+                            placeholder="correo"
+                            formControlName="correo">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="celular"
+                        class="col-sm-2 col-form-label label-rosado">Celular</label>
+                    <div class="col sm-6">
+                        <input type="text" class="form-control"
+                            placeholder="celular"
+                            formControlName="celular">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="rol"
+                        class="col-sm-2 col-form-label label-rosado">
+                        Rol
+                    </label>
+                    <div class="col-sm-6">
+                        <select id="rol" class="form-control"
+                            formControlName="rol">
+                            <option value={{user?.rol}}
+                                selected>{{user?.rol}}</option>
+                            <option value="ADMIN">ADMIN</option>
+                            <option value="ALUMNO">ALUMNO</option>
+                            <option value="INSTRUCTOR">INSTRUCTOR</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="row gap-3">
+                    <button type="submit" class="btn btn-default"
+                        (click)="onNoClick()">Cancelar</button>
+                    <button type="button" class="btn btn-primary"
+                        [mat-dialog-close]="data">Guardar</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>

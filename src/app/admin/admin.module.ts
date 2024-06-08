@@ -9,7 +9,7 @@ import { UserDetailsComponent } from './users/user-details/user-details.componen
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,7 +25,7 @@ import { FormsModule } from '@angular/forms';
         MatDialogModule,
         MatFormFieldModule,
         MatInputModule,
-        FormsModule
+        ReactiveFormsModule
     ]
 })
 export class AdminModule { }
