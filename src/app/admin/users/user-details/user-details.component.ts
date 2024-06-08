@@ -1,9 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { User } from 'src/app/core/interfaces/user';
 import { Usuario } from 'src/app/core/interfaces/users-list';
 import { UserService } from 'src/app/core/services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-details',
@@ -22,13 +22,37 @@ export class UserDetailsComponent implements OnInit {
     private userService: UserService
   ) {
     this.userForm = this.formBuilder.group({
-      nombre: [''],
-      apellido_paterno: [''],
-      apellido_materno: [''],
-      correo: [''],
-      celular: [''],
-      rol: ['']
+      nombre: ['', Validators.required],
+      apellido_paterno: ['', Validators.required],
+      apellido_materno: ['', Validators.required],
+      correo: ['', [Validators.required, Validators.email]],
+      celular: ['', Validators.required],
+      rol: ['', Validators.required]
     })
+  }
+
+  get nombre() {
+    return this.userForm.controls['nombre']
+  }
+
+  get apellido_paterno() {
+    return this.userForm.controls['apellido_paterno']
+  }
+
+  get apellido_materno() {
+    return this.userForm.controls['apellido_materno']
+  }
+
+  get correo() {
+    return this.userForm.controls['correo']
+  }
+
+  get celular() {
+    return this.userForm.controls['celular']
+  }
+
+  get rol() {
+    return this.userForm.controls['rol']
   }
 
   ngOnInit(): void {
@@ -44,6 +68,22 @@ export class UserDetailsComponent implements OnInit {
   }
 
   save(): void {
-    this.dialogRef.close(this.userForm?.value)
+    if (this.userForm.invalid) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Por favor, completa todos los campos correctamente'
+      })
+    }
+
+    if (this.userForm.dirty && this.userForm.valid) {
+      this.dialogRef.close(this.userForm?.value)
+      console.log(this.userForm.value)
+      Swal.fire({
+        icon: 'success',
+        title: 'Éxito',
+        text: 'Se actualizaron los datos correctamente'
+      })
+    }
   }
 }

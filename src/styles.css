@@ -64,15 +64,6 @@
 }
 
 
-
-
-
-
-
-
-
-
-
 /* CONTENEDORES */
 
 .hero-wrap {
@@ -109,3 +100,19 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }*/
+
+/*BOTONES*/
+
+button[disabled] {
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+button[disabled]:hover {
+    background-color: initial;
+}
+
+.btn-default:hover {
+    background-color: slategrey;
+    color: #fff;
+}
