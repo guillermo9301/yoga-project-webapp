@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from 'src/app/core/interfaces/users-list';
 import { UserService } from 'src/app/core/services/user.service';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { MatDialog } from '@angular/material/dialog';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 @Component({
   selector: 'app-users',
@@ -9,10 +11,11 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+
   faSearch = faSearch
   usersList: Usuario[] = []
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private dialog: MatDialog) { }
 
   getFullName(row: any): string {
     return `${row.apellido_paterno} ${row.apellido_materno}`;
@@ -27,6 +30,17 @@ export class UsersComponent implements OnInit {
       error: (error) => {
         console.error('Error fetching users', error);
       }
+    })
+  }
+
+  openEditModal(userId: number): void {
+    const dialogRef = this.dialog.open(UserDetailsComponent, {
+      width: '400px',
+      data: { id: userId }
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+
     })
   }
 

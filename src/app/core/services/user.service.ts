@@ -14,8 +14,8 @@ export class UserService {
 
     }
 
-    getUser(id: number): Observable<User> {
-        return this.http.get<User>(environment.url + "user/" + id).pipe(
+    getUser(id: number): Observable<Usuario> {
+        return this.http.get<Usuario>(environment.url + "user/" + id).pipe(
             catchError(this.handlerError)
         )
     }

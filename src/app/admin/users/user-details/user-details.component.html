@@ -1,1 +1,16 @@
-<p>user-details works!</p>
+<h2 mat-dialog-title>Editar Usuario</h2>
+<div mat-dialog-content>
+    <form>
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+        </mat-form-field>
+        <!-- Otros campos de usuario -->
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
+    <button mat-button [mat-dialog-close]="data">Guardar</button>
+</div>
