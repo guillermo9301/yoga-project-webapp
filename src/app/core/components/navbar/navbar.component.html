@@ -3,7 +3,7 @@
     class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
     id="ftco-navbar">
     <div class="container">
-        <a class="navbar-brand" href="index.html"><span
+        <a class="navbar-brand" [routerLink]="['/']"><span
                 class="flaticon-lotus"></span>One Love Yoga</a>
         <button class="navbar-toggler" type="button"
             data-toggle="collapse" data-target="#ftco-nav"
@@ -15,7 +15,8 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/']"
-                        routerLinkActive="active">Inicio</a>
+                        routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact: true}">Inicio</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/about']"
@@ -52,8 +53,7 @@
                         <img src="assets/images/avatar-default-icon.png"
                             class="avatar"
                             alt="User Avatar">
-                        Bienvenido {{userData?.nombre}}
-                        {{userData?.apellido_paterno}}!
+                        Bienvenido {{userData?.nombre}}!
                     </a>
                 </li>
                 <li class="nav-item" *ngIf="userLoginOn">
