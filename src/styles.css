@@ -80,3 +80,22 @@
 .hero-wrap {
     padding-top: 60px !important;
 }
+
+
+.container-center{
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-card-body {
+    width: 100%;
+    max-width: 400px;
+}
+.password-container {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+
