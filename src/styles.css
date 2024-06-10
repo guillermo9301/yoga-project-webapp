@@ -1,6 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900");
-@import url("https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false");
-
 
 
 /* Estilos de validacion de formularios */
@@ -66,15 +64,6 @@
 }
 
 
-
-
-
-
-
-
-
-
-
 /* CONTENEDORES */
 
 .hero-wrap {
@@ -82,20 +71,47 @@
 }
 
 
-.container-center{
+.container-center {
     height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .login-card-body {
     width: 100%;
     max-width: 400px;
 }
+
 .password-container {
-display: flex;
-justify-content: space-between;
-align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+/*
+html,
+body {
+    height: 100%;
+}
 
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}*/
+
+/*BOTONES*/
+
+button[disabled] {
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+button[disabled]:hover {
+    background-color: initial;
+}
+
+.btn-default:hover {
+    background-color: slategrey;
+    color: #fff;
+}

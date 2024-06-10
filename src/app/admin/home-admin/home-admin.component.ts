@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
   templateUrl: './home-admin.component.html'
 })
 
-export class HomeAdminComponent implements OnInit, OnDestroy {
+export class HomeAdminComponent implements OnInit {
 
   userLoginOn: boolean = false;
   userData?: User
@@ -30,12 +30,4 @@ export class HomeAdminComponent implements OnInit, OnDestroy {
       }
     })
   }
-
-  ngOnDestroy(): void {
-    this.authService.currentUserLoginOn.unsubscribe()
-    this.authService.currentUserData.unsubscribe()
-
-  }
-
-
 }
