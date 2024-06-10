@@ -15,12 +15,14 @@ import { FooterComponent } from './core/components/footer/footer.component';
 import { ErrorInterceptorService } from './core/interceptors/error-interceptor.service';
 import { AuthService } from './core/services/auth.service';
 import { UserService } from './core/services/user.service';
+import { AttendanceComponent } from './instructor/attendance/attendance.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    AttendanceComponent
   ],
   imports: [
     BrowserModule,
