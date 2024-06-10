@@ -22,11 +22,6 @@ export class LoginComponent implements OnInit {
         password: ['', Validators.required]
     })
 
-    /*credentials = {
-        correo: '',
-        password: ''
-    }*/
-
     constructor(private router: Router, private authService: AuthService, private formBuilder: FormBuilder) { }
 
 

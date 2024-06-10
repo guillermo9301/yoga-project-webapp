@@ -4,6 +4,7 @@ import { UserService } from 'src/app/core/services/user.service';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog } from '@angular/material/dialog';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-users',
@@ -15,13 +16,19 @@ export class UsersComponent implements OnInit {
   faSearch = faSearch
   usersList: Usuario[] = []
 
-  constructor(private userService: UserService, private dialog: MatDialog) { }
-
-  getFullName(row: any): string {
-    return `${row.apellido_paterno} ${row.apellido_materno}`;
-  }
+  constructor(private userService: UserService, private authService: AuthService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.authService.userLoginOn.subscribe(isLoggedIn => {
+      if (isLoggedIn) {
+        this.loadUsers()
+      } else {
+        console.error("Usuario no autenticado")
+      }
+    })
+  }
+
+  loadUsers() {
     this.userService.getAllUsers().subscribe({
       next: (data) => {
         this.usersList = data

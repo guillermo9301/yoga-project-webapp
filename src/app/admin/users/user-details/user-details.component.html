@@ -81,6 +81,48 @@
 
             <div class="mb-3">
                 <div class="form-group row">
+                    <label for="rol"
+                        class="col-sm-2 col-form-label label-rosado">
+                        Tipo de Documento
+                    </label>
+                    <div class="col-sm-6">
+                        <select id="id_tipo_documento" class="form-control"
+                            formControlName="id_tipo_documento">
+                            <option value={{user?.id_tipo_documento}}
+                                selected>{{user?.id_tipo_documento}}</option>
+                            <option value="1">D.N.I.</option>
+                            <option value="2">C.E.</option>
+                            <option value="3">Pasaporte</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="text-danger"
+                    *ngIf="id_tipo_documento.invalid || id_tipo_documento.errors?.['required']">
+                    <div>
+                        Debe seleccionar un tipo de documento</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="nro_documento"
+                        class="col-sm-2 col-form-label label-rosado">Nro. de
+                        documento</label>
+                    <div class="col sm-6">
+                        <input type="text" class="form-control"
+                            placeholder="Nro. de documento"
+                            formControlName="nro_documento">
+                    </div>
+                </div>
+                <div class="text-danger"
+                    *ngIf="nro_documento.invalid || nro_documento.errors?.['required']">
+                    <div>
+                        Debe ingresar el nro del Documento</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group row">
                     <label for="celular"
                         class="col-sm-2 col-form-label label-rosado">Celular</label>
                     <div class="col sm-6">
@@ -93,6 +135,24 @@
                     *ngIf="celular.invalid || celular.errors?.['required']">
                     <div>
                         Debe ingresar un celular</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="fec_nacimiento"
+                        class="col-sm-2 col-form-label label-rosado">Fecha de
+                        nacimiento</label>
+                    <div class="col sm-6">
+                        <input type="date" class="form-control"
+                            placeholder="Fecha de nacimiento"
+                            formControlName="fec_nacimiento">
+                    </div>
+                </div>
+                <div class="text-danger"
+                    *ngIf="fec_nacimiento.invalid || fec_nacimiento.errors?.['required']">
+                    <div>
+                        Debe ingresar la fecha de nacimiento</div>
                 </div>
             </div>
 
