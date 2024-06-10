@@ -1,1 +1,45 @@
-<p>reservation works!</p>
+<!-- reserva.component.html -->
+
+<section class="background-section" style="background-image: url(assets/images/yoga.jpg);">
+ 
+  <div class="col-md-6 formulario ">
+    <form action="#" class="contact-form">
+        <div class="row justify-content-end">
+            <div class="col-md-6">
+            <div class="form-group">
+                <label for="email" class="form-label">Nombre</label>
+              <input type="text" class="form-control" placeholder="tu nombre">
+            </div>
+           </div>
+          <div class="col-md-6">
+            <div class="form-group">
+                <label for="email" class="form-label">Correo</label>
+              <input type="text" class="form-control" placeholder="tu correo">
+            </div>
+            </div>
+            <div class="col-md-6">
+            <div class="form-group">
+                <label for="email" class="form-label">Horario Inicio</label>
+                <input type="text" class="form-control" 
+                [value]="startTime" readonly id="startTime">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="email" class="form-label">Horario Fin</label>
+                <input type="text" class="form-control" 
+                [value]="endTime" readonly id="endTime">
+              </div>
+            </div>
+      </div>
+  
+     
+   
+      <div class="form-group">
+        <input type="submit" value="Reservar" class="btn btn-primary py-3 px-5">
+      </div>
+    </form>
+  </div>
+
+</section>
+
