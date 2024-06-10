@@ -102,6 +102,7 @@ export class UserDetailsComponent implements OnInit {
                         title: 'Éxito',
                         text: 'Se actualizaron los datos correctamente'
                     })
+
                 },
                 error: (error) => {
                     Swal.fire({
@@ -109,7 +110,7 @@ export class UserDetailsComponent implements OnInit {
                         title: 'Error',
                         text: 'Hubo un problema al actualizar los datos'
                     })
-                }
+                },
             })
         }
     }
