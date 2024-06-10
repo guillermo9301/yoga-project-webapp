@@ -1,1 +1,117 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900");
+
+
+/* Estilos de validacion de formularios */
+.ng-valid:not(form).ng-touched {
+    border-left: 5px solid #28a745
+}
+
+.ng-invalid:not(form).ng-touched {
+    border-left: 5px solid #dc3545;
+}
+
+
+/* Personalización de las notificaciones toastr */
+.toast-success {
+    background-color: #28a745 !important;
+    color: white;
+}
+
+.toast-error {
+    background-color: #dc3545 !important;
+    color: white;
+}
+
+#toast-container>.toast-top-right {
+    top: 12px;
+    right: 12px;
+}
+
+/*NAV-BAR*/
+.avatar {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+
+.navbar {
+    position: static !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+}
+
+#ftco-navbar .navbar-nav .nav-link {
+    transition: color 0.3s ease !important;
+    text-decoration: none;
+}
+
+/* Estilo hover para los elementos del navbar */
+#ftco-navbar .navbar-nav .nav-link:hover {
+    color: #b8669c !important;
+    text-decoration: none !important;
+}
+
+/* Estilo active para los elementos del navbar */
+#ftco-navbar .navbar-nav .nav-link.active {
+    color: #b8669c !important;
+    font-weight: bolder !important;
+}
+
+/* Opcional: estilo para el icono cuando el enlace está activo */
+.navbar-nav .nav-item.active .nav-link .fa-icon {
+    color: #b8669c !important;
+}
+
+
+/* CONTENEDORES */
+
+.hero-wrap {
+    padding-top: 60px !important;
+}
+
+
+.container-center {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card-body {
+    width: 100%;
+    max-width: 400px;
+}
+
+.password-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}*/
+
+/*BOTONES*/
+
+button[disabled] {
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+button[disabled]:hover {
+    background-color: initial;
+}
+
+.btn-default:hover {
+    background-color: slategrey;
+    color: #fff;
+}

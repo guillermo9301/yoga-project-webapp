@@ -1,0 +1,194 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h2>Editar Usuario</h2>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="userForm"
+            class="contact-form  d-flex flex-column">
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="nombre"
+                        class="col-sm-2 col-form-label label-rosado">Nombre</label>
+                    <div class="col sm-6">
+                        <input type="text" class="form-control"
+                            placeholder="Nombre"
+                            formControlName="nombre">
+                    </div>
+                </div>
+                <div class="text-danger"
+                    *ngIf="nombre.invalid || nombre.errors?.['required']">
+                    <div>
+                        Debe ingresar un nombre</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="apellido_paterno"
+                        class="col-sm-2 col-form-label label-rosado">Apellido
+                        Paterno</label>
+                    <div class="col sm-6">
+                        <input type="text" class="form-control"
+                            placeholder="apellido_paterno"
+                            formControlName="apellido_paterno">
+                    </div>
+                </div>
+                <div class="text-danger"
+                    *ngIf="apellido_paterno.invalid || apellido_paterno.errors?.['required']">
+                    <div>
+                        Debe ingresar el Apellido Paterno</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="apellido_materno"
+                        class="col-sm-2 col-form-label label-rosado">Apellido
+                        Materno</label>
+                    <div class="col sm-6">
+                        <input type="text" class="form-control"
+                            placeholder="apellido_materno"
+                            formControlName="apellido_materno">
+                    </div>
+                </div>
+                <div class="text-danger"
+                    *ngIf="apellido_materno.invalid || apellido_materno.errors?.['required']">
+                    <div>
+                        Debe ingresar el Apellido Materno</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="correo"
+                        class="col-sm-2 col-form-label label-rosado">Correo</label>
+                    <div class="col sm-6">
+                        <input type="text" class="form-control"
+                            placeholder="correo"
+                            formControlName="correo">
+                    </div>
+                </div>
+                <div class="text-danger">
+                    <div *ngIf="correo.errors?.['required']">
+                        Debe ingresar un correo
+                    </div>
+                    <div *ngIf="correo.errors?.['email']">
+                        El correo debe ser válido
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="rol"
+                        class="col-sm-2 col-form-label label-rosado">
+                        Tipo de Documento
+                    </label>
+                    <div class="col-sm-6">
+                        <select id="id_tipo_documento" class="form-control"
+                            formControlName="id_tipo_documento">
+                            <option value={{user?.id_tipo_documento}}
+                                selected>{{user?.id_tipo_documento}}</option>
+                            <option value="1">D.N.I.</option>
+                            <option value="2">C.E.</option>
+                            <option value="3">Pasaporte</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="text-danger"
+                    *ngIf="id_tipo_documento.invalid || id_tipo_documento.errors?.['required']">
+                    <div>
+                        Debe seleccionar un tipo de documento</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="nro_documento"
+                        class="col-sm-2 col-form-label label-rosado">Nro. de
+                        documento</label>
+                    <div class="col sm-6">
+                        <input type="text" class="form-control"
+                            placeholder="Nro. de documento"
+                            formControlName="nro_documento">
+                    </div>
+                </div>
+                <div class="text-danger"
+                    *ngIf="nro_documento.invalid || nro_documento.errors?.['required']">
+                    <div>
+                        Debe ingresar el nro del Documento</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="celular"
+                        class="col-sm-2 col-form-label label-rosado">Celular</label>
+                    <div class="col sm-6">
+                        <input type="text" class="form-control"
+                            placeholder="celular"
+                            formControlName="celular">
+                    </div>
+                </div>
+                <div class="text-danger"
+                    *ngIf="celular.invalid || celular.errors?.['required']">
+                    <div>
+                        Debe ingresar un celular</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="fec_nacimiento"
+                        class="col-sm-2 col-form-label label-rosado">Fecha de
+                        nacimiento</label>
+                    <div class="col sm-6">
+                        <input type="date" class="form-control"
+                            placeholder="Fecha de nacimiento"
+                            formControlName="fec_nacimiento">
+                    </div>
+                </div>
+                <div class="text-danger"
+                    *ngIf="fec_nacimiento.invalid || fec_nacimiento.errors?.['required']">
+                    <div>
+                        Debe ingresar la fecha de nacimiento</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="rol"
+                        class="col-sm-2 col-form-label label-rosado">
+                        Rol
+                    </label>
+                    <div class="col-sm-6">
+                        <select id="rol" class="form-control"
+                            formControlName="rol">
+                            <option value={{user?.rol}}
+                                selected>{{user?.rol}}</option>
+                            <option value="ADMIN">ADMIN</option>
+                            <option value="ALUMNO">ALUMNO</option>
+                            <option value="INSTRUCTOR">INSTRUCTOR</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="text-danger"
+                    *ngIf="rol.invalid || rol.errors?.['required']">
+                    <div>
+                        Debe seleccionar un Rol</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="row gap-3">
+                    <button type="button" class="btn btn-default"
+                        (click)="onNoClick()">Cancelar</button>
+                    <button type="button" class="btn btn-primary"
+                        (click)="save()"
+                        [disabled]="userForm.pristine || userForm.invalid">Guardar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

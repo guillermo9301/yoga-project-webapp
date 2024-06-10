@@ -4,48 +4,84 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Administrador - One Love Yoga</title>
-
+       
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     </head>
-    <body class="hold-transition login-page">
-        <div class="login-box">
+    <body >
+       <br>
+       <br>
+       <br>
             <div class="login-logo">
-                <a href="../../index2.html"><b>Administrador</b> One Love
-                    Yoga</a>
+                <a [routerLink]="['/']"><h3  class="mb-3 text-center">One Love
+                        Yoga</h3> </a>
             </div>
             <!-- /.login-logo -->
-            <div class="card">
-                <div class="card-body login-card-body">
-                    <p class="login-box-msg">Iniciar sesion como
-                        administrador</p>
+       
+            <div class="container-center">
+                <div class="login-card-body">
+                    <p class="mb-3 bread text-center">Iniciar sesion</p>
 
-                    <form>
-                        <div class="input-group mb-3">
-                            <input type="email" class="form-control"
-                                placeholder="Email">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-envelope"></span>
+                    <form [formGroup]="loginForm" class="contact-form">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo</label>
+                            <div class="input-group">
+                                <input type="email" id="correo"
+                                    placeholder="correo"
+                                    formControlName="correo"
+                                    class="form-control" required>
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <fa-icon [icon]="faEnvelope"></fa-icon>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-danger"
+                                *ngIf="correo.invalid && (correo.dirty || correo.touched)">
+                                <div
+                                    *ngIf="correo.errors?.['required']">Debe
+                                    ingresar su correo</div>
+                                <div
+                                    *ngIf="correo.errors?.['email']">
+                                    Debe tener un formato de correo
                                 </div>
                             </div>
                         </div>
-                        <div class="input-group mb-3">
-                            <input type="password" class="form-control"
-                                placeholder="Password">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-lock"></span>
+
+                        <div class="mb-3">
+                          <div class="password-container">
+                            <label for="password" class="form-label mr-3">Password</label>
+                            <a href="" class="ml-auto">
+                                <small>¿Olvidó su contraseña?</small>
+                            </a>
+                          </div>
+                            <div class="input-group">
+                                <input type="password" id="password"
+                                    placeholder="password"
+                                    formControlName="password"
+                                    class="form-control"
+                                    required>
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <fa-icon [icon]="faLock"></fa-icon>
+                                    </div>
                                 </div>
                             </div>
+                            <div
+                                *ngIf="password.invalid && (password.dirty || password.touched)"
+                                class="text-danger">
+                                <div *ngIf="password.errors?.['required']">Debe
+                                    ingresar su password</div>
+                            </div>
                         </div>
-                        <div class="row">
+
+                        <div class="row justify-content-center">
 
                             <!-- /.col -->
-                            <div class="col-4">
-                                <button type="button" (click)="login()"
-                                    class="btn btn-primary btn-block">Acceder
+                            <div class="mb-3 text-center ">
+                                <button type="submit" (click)="login()"
+                                class="btn btn-primary py-3 px-5 ">Acceder
                                 </button>
                             </div>
                             <!-- /.col -->
@@ -55,15 +91,8 @@
                 </div>
                 <!-- /.login-card-body -->
             </div>
-        </div>
-        <!-- /.login-box -->
+       
 
-        <!-- jQuery -->
-        <script src="../../plugins/jquery/jquery.min.js"></script>
-        <!-- Bootstrap 4 -->
-        <script
-            src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- AdminLTE App -->
-        <script src="../../dist/js/adminlte.min.js"></script>
+       
     </body>
 </html>
