@@ -11,6 +11,9 @@ node_modules/
 npm-debug.log
 yarn-error.log
 
+# Compiled JavaScript files
+*.js
+
 
 # IDEs and editors
 .idea/
