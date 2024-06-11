@@ -18,7 +18,6 @@ import { FooterComponent } from './core/components/footer/footer.component';
   declarations: [
     AppComponent,
     NavbarComponent,
-    FooterComponent
 
   ],
   imports: [
