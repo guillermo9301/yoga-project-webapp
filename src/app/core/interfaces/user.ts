@@ -3,5 +3,6 @@ export interface User {
     nombre: string;
     correo: string;
     apellido_paterno: string;
+    apellido_materno: string;
     rol: string
 }

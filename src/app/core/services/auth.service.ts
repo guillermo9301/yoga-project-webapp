@@ -18,6 +18,7 @@ export class AuthService {
         token: '',
         nombre: '',
         apellido_paterno: '',
+        apellido_materno: '',
         correo: '',
         rol: ''
     })
@@ -79,6 +80,7 @@ export class AuthService {
             token: '',
             nombre: '',
             apellido_paterno: '',
+            apellido_materno: '',
             correo: '',
             rol: ''
         });
