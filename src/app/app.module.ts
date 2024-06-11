@@ -12,13 +12,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { FooterComponent } from './core/components/footer/footer.component';
+import { ErrorInterceptorService } from './core/interceptors/error-interceptor.service';
+import { AuthService } from './core/services/auth.service';
+import { UserService } from './core/services/user.service';
+import { AttendanceComponent } from './instructor/attendance/attendance.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-
+    AttendanceComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,10 @@ import { FooterComponent } from './core/components/footer/footer.component';
     FullCalendarModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+    AuthService,
+    UserService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]
 })

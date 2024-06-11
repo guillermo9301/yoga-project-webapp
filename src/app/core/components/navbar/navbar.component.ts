@@ -2,47 +2,38 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { faUser, faComments, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../interfaces/user';
+import { UserService } from '../../services/user.service';
 
 
 @Component({
     selector: 'app-navbar',
     templateUrl: './navbar.component.html'
 })
-export class NavbarComponent implements OnInit, OnDestroy {
-    userLoginOn: boolean = false;
+export class NavbarComponent {
+    userLoginOn?: boolean
     userData?: User
-    currentUser: any;
+    currentUser?: any;
 
 
-    constructor(private authService: AuthService) { }
-
-    ngOnInit(): void {
+    constructor(private authService: AuthService) {
         this.authService.currentUserLoginOn.subscribe({
             next: (userLoginOn) => {
                 this.userLoginOn = userLoginOn
+                console.log("Login on? desde navbar " + userLoginOn)
             }
         })
 
         this.authService.currentUserData.subscribe({
             next: (userData) => {
                 this.userData = userData
+                console.log("Userdata desde el navbar " + userData.nombre)
             }
         })
-
-
     }
-
-    ngOnDestroy(): void {
-        this.authService.currentUserData.unsubscribe()
-        this.authService.currentUserLoginOn.unsubscribe()
-    }
-
-
 
     logout() {
         this.authService.logout();
         this.currentUser = null;
-        //window.location.reload()
     }
 
     faUser = faUser

@@ -10,18 +10,28 @@ import { Usuario } from "../interfaces/users-list";
 })
 export class UserService {
 
+    private collection = 'user'
+
     constructor(private http: HttpClient) {
 
     }
 
-    getUser(id: number): Observable<User> {
-        return this.http.get<User>(environment.url + "user/" + id).pipe(
+    getUser(id: number): Observable<Usuario> {
+        return this.http.get<Usuario>(environment.url + this.collection + "/" + id).pipe(
             catchError(this.handlerError)
         )
     }
 
     getAllUsers(): Observable<Usuario[]> {
-        return this.http.get<Usuario[]>(environment.url + "user").pipe(
+        return this.http.get<Usuario[]>(environment.url + this.collection).pipe(
+            catchError(this.handlerError)
+        )
+    }
+
+    updateUser(id: number, data: Usuario): Observable<Usuario> {
+        console.log('ID que recibe el servicio: ' + id)
+        console.log('Data que recibe el servicio: ' + JSON.stringify(data))
+        return this.http.put<Usuario>(environment.url + this.collection + "/" + id, data).pipe(
             catchError(this.handlerError)
         )
     }

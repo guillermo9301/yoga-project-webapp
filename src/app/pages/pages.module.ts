@@ -15,7 +15,6 @@ import { FooterComponent } from '../core/components/footer/footer.component';
 @NgModule({
     declarations: [
         HomeComponent,
-
         AboutComponent,
         ContactComponent,
         ClasesComponent,
