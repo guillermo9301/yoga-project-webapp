@@ -11,6 +11,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { ReservationComponent } from './reservation/reservation.component';
 import { FooterComponent } from '../core/components/footer/footer.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import { FooterComponent } from '../core/components/footer/footer.component';
     imports: [
         CommonModule,
         PagesRoutingModule,
-        FullCalendarModule
+        FullCalendarModule,
+        ReactiveFormsModule
     ]
 })
 export class PagesModule { }
