@@ -16,6 +16,7 @@ export class AuthService {
     currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
     currentUserData: BehaviorSubject<User> = new BehaviorSubject<User>({
         token: '',
+        id: 0,
         nombre: '',
         apellido_paterno: '',
         apellido_materno: '',
@@ -78,6 +79,7 @@ export class AuthService {
         this.currentUserLoginOn.next(false);
         this.currentUserData.next({
             token: '',
+            id: 0,
             nombre: '',
             apellido_paterno: '',
             apellido_materno: '',
