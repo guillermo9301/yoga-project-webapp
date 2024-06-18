@@ -1,17 +1,22 @@
 <div class="content">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Tu clase de prueba</h5>
-                        <p class="card-text" style="font-weight: 600;">Hora: </p><p></p>
-                        <p class="card-text" style="font-weight: 600;">Fecha:</p>
-                        <a routerLink="/reservationEdit" class="card-link">Editar</a>
-                        <a href="#" class="card-link">Eliminar</a>
-                    </div>
-                </div>
+      <div class="row" *ngIf="trialClass && trialClass.length > 0; else noData">
+        <div class="col-lg-6" *ngFor="let trial of trialClass">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Tu clase de prueba</h5>
+              <p class="card-text" style="font-weight: 600;">Hora Inicio: {{ trial.hora_inicio }}</p>
+              <p class="card-text" style="font-weight: 600;">Hora Fin: {{ trial.hora_fin }}</p>
+              <p class="card-text" style="font-weight: 600;">Fecha: {{ trial.fecha }}</p>
+              <a [routerLink]="['/reservationEdit']" [queryParams]="{ id: trial.id }" class="card-link">Editar</a>
+              <a [routerLink]="['/calendario']" (click)="deleteTrial(trial.id)" class="card-link">Eliminar</a>
             </div>
+          </div>
         </div>
+      </div>
+      <ng-template #noData>
+        <p>No hay clases de prueba disponibles.</p>
+      </ng-template>
     </div>
-</div>
+  </div>
+  
