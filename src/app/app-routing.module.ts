@@ -8,6 +8,8 @@ import { ClasesComponent } from './pages/clases/clases.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { ReservationComponent } from './pages/reservation/reservation.component';
 import { PasswordRecoveryComponent } from './auth/password-recovery/password-recovery.component';
+import { ReservationListComponent } from './pages/reservation/reservation-list/reservation-list.component';
+import { ReservationEditComponent } from './pages/reservation/reservation-edit/reservation-edit.component';
 
 const routes: Routes = [
   { path: '', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule) },
@@ -20,6 +22,8 @@ const routes: Routes = [
   { path: 'calendario', component: CalendarComponent },
   { path: 'reserva', component: ReservationComponent },
   { path: 'recovery', component: PasswordRecoveryComponent },
+  { path: 'reservationList', component: ReservationListComponent},
+  { path: 'reservationEdit', component: ReservationEditComponent},
 ];
 
 @NgModule({

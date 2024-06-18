@@ -18,6 +18,10 @@ export class TrialClassService {
         return this.http.post(environment.url + this.collection + '/book', bookData)
     }
 
+    listar(): Observable<any>{
+        return this.http.get(environment.url + this.collection)
+    }
+
     private handlerError(error: HttpErrorResponse) {
         if (error.status === 0) {
             console.error('Se ha producido un error ' + error.error)
@@ -28,4 +32,5 @@ export class TrialClassService {
             new Error('Algo falló, porfavor intente nuevamente')
         })
     }
+
 }
