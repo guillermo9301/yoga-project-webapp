@@ -6,12 +6,17 @@ import { LoginComponent } from './login/login.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { RegistroAlumnoComponent } from './registro-alumno/registro-alumno.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HorarioComponent } from './horario/horario.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { ReservaHorarioComponent } from './horario/reserva-horario/reserva-horario.component';
 
 
 @NgModule({
     declarations: [
         LoginComponent,
-        RegistroAlumnoComponent
+        RegistroAlumnoComponent,
+        HorarioComponent,
+        ReservaHorarioComponent
 
     ],
     imports: [
@@ -19,7 +24,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
         FormsModule,
         AuthRoutingModule,
         ReactiveFormsModule,
-        FontAwesomeModule
+        FontAwesomeModule,
+        FullCalendarModule
     ]
 })
 export class AuthModule { }
