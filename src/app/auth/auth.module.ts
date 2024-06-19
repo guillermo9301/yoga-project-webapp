@@ -10,6 +10,8 @@ import { HorarioComponent } from './horario/horario.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { ReservaHorarioComponent } from './horario/reserva-horario/reserva-horario.component';
 import { PasswordRecoveryComponent } from './password-recovery/password-recovery.component';
+import { UserHorarioComponent } from './horario/user-horario/user-horario.component';
+import { EditarHorarioComponent } from './horario/user-horario/editar-horario/editar-horario.component';
 
 
 @NgModule({
@@ -17,7 +19,10 @@ import { PasswordRecoveryComponent } from './password-recovery/password-recovery
         LoginComponent,
         RegistroAlumnoComponent,
         HorarioComponent,
-        ReservaHorarioComponent
+        ReservaHorarioComponent,
+        PasswordRecoveryComponent,
+        UserHorarioComponent,
+        EditarHorarioComponent
 
     ],
     imports: [
