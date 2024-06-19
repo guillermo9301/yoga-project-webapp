@@ -9,6 +9,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HorarioComponent } from './horario/horario.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { ReservaHorarioComponent } from './horario/reserva-horario/reserva-horario.component';
+import { PasswordRecoveryComponent } from './password-recovery/password-recovery.component';
 
 
 @NgModule({
