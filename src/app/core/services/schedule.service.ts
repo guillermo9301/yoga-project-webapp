@@ -21,7 +21,15 @@ export class ScheduleService {
         return this.http.post(environment.url + this.collection + '/book', data)
     }
 
+    getSchedule(id: number): Observable<any> {
+        return this.http.get(environment.url + this.collection + '/' + id)
+    }
+
     listUserSchedule(id: number): Observable<any> {
         return this.http.get(environment.url + this.collection + '/alumno/' + id)
+    }
+
+    updateSchedule(data: any): Observable<any> {
+        return this.http.put(environment.url + this.collection + '/update', data)
     }
 }

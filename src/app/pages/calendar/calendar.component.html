@@ -1,5 +1,6 @@
 <div class="container">
-    <p><a routerLink="/reservationList" class="btn btn-primary">Mis Reservas</a>
+    <p><a *ngIf="userLogin" routerLink="/reservationList"
+            class="btn btn-primary">Mis Reservas</a>
         <div></div>
-    <full-calendar [options]="calendarOptions"></full-calendar>
-</div>
+        <full-calendar [options]="calendarOptions"></full-calendar>
+    </div>

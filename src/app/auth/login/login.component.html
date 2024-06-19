@@ -4,95 +4,96 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Administrador - One Love Yoga</title>
-       
+
         <!-- Google Font: Source Sans Pro -->
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     </head>
-    <body >
-       <br>
-       <br>
-       <br>
-            <div class="login-logo">
-                <a [routerLink]="['/']"><h3  class="mb-3 text-center">One Love
-                        Yoga</h3> </a>
-            </div>
-            <!-- /.login-logo -->
-       
-            <div class="container-center">
-                <div class="login-card-body">
-                    <p class="mb-3 bread text-center">Iniciar sesion</p>
+    <body>
+        <br>
+        <br>
+        <br>
+        <div class="login-logo">
+            <a [routerLink]="['/']"><h3 class="mb-3 text-center">One Love
+                    Yoga</h3> </a>
+        </div>
+        <!-- /.login-logo -->
 
-                    <form [formGroup]="loginForm" class="contact-form">
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Correo</label>
-                            <div class="input-group">
-                                <input type="email" id="correo"
-                                    placeholder="correo"
-                                    formControlName="correo"
-                                    class="form-control" required>
-                                <div class="input-group-append">
-                                    <div class="input-group-text">
-                                        <fa-icon [icon]="faEnvelope"></fa-icon>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="text-danger"
-                                *ngIf="correo.invalid && (correo.dirty || correo.touched)">
-                                <div
-                                    *ngIf="correo.errors?.['required']">Debe
-                                    ingresar su correo</div>
-                                <div
-                                    *ngIf="correo.errors?.['email']">
-                                    Debe tener un formato de correo
+        <div class="container-center">
+            <div class="login-card-body">
+                <p class="mb-3 bread text-center">Iniciar sesion</p>
+
+                <form [formGroup]="loginForm" class="contact-form">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Correo</label>
+                        <div class="input-group">
+                            <input type="email" id="correo"
+                                placeholder="correo"
+                                formControlName="correo"
+                                class="form-control" required>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <fa-icon [icon]="faEnvelope"></fa-icon>
                                 </div>
                             </div>
                         </div>
+                        <div class="text-danger"
+                            *ngIf="correo.invalid && (correo.dirty || correo.touched)">
+                            <div
+                                *ngIf="correo.errors?.['required']">Debe
+                                ingresar su correo</div>
+                            <div
+                                *ngIf="correo.errors?.['email']">
+                                Debe tener un formato de correo
+                            </div>
+                        </div>
+                    </div>
 
-                        <div class="mb-3">
-                          <div class="password-container">
-                            <label for="password" class="form-label mr-3">Password</label>
+                    <div class="mb-3">
+                        <div class="password-container">
+                            <label for="password"
+                                class="form-label mr-3">Password</label>
                             <a routerLink="/recovery" class="ml-auto">
                                 <small>¿Olvidó su contraseña?</small>
                             </a>
-                          </div>
-                            <div class="input-group">
-                                <input type="password" id="password"
-                                    placeholder="password"
-                                    formControlName="password"
-                                    class="form-control"
-                                    required>
-                                <div class="input-group-append">
-                                    <div class="input-group-text">
-                                        <fa-icon [icon]="faLock"></fa-icon>
-                                    </div>
+                        </div>
+                        <div class="input-group">
+                            <input type="password" id="password"
+                                placeholder="password"
+                                formControlName="password"
+                                class="form-control"
+                                required>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <fa-icon [icon]="faLock"></fa-icon>
                                 </div>
                             </div>
-                            <div
-                                *ngIf="password.invalid && (password.dirty || password.touched)"
-                                class="text-danger">
-                                <div *ngIf="password.errors?.['required']">Debe
-                                    ingresar su password</div>
-                            </div>
                         </div>
+                        <div
+                            *ngIf="password.invalid && (password.dirty || password.touched)"
+                            class="text-danger">
+                            <div *ngIf="password.errors?.['required']">Debe
+                                ingresar su password</div>
+                        </div>
+                    </div>
 
-                        <div class="row justify-content-center">
+                    <div class="row justify-content-center">
 
-                            <!-- /.col -->
-                            <div class="mb-3 text-center ">
-                                <button type="submit" (click)="login()"
+                        <!-- /.col -->
+                        <div class="mb-3 text-center ">
+                            <button type="submit" (click)="login()"
                                 class="btn btn-primary py-3 px-5 ">Acceder
-                                </button>
-                            </div>
-                            <!-- /.col -->
+                            </button>
                         </div>
-                    </form>
-                    <!-- /.social-auth-links -->
-                </div>
-                <!-- /.login-card-body -->
+                        <!-- /.col -->
+                    </div>
+                </form>
+                <!-- /.social-auth-links -->
+                <p class="mb-3 bread text-center">Si no tienes cuenta registrate
+                    <a [routerLink]="['/signup']">aqui</a></p>
             </div>
-       
+            <!-- /.login-card-body -->
+        </div>
 
-       
     </body>
 </html>

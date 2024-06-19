@@ -14,7 +14,7 @@ const routes: Routes = [
     { path: 'horario', component: HorarioComponent },
     { path: 'horario/reserva-horario', component: ReservaHorarioComponent },
     { path: 'horario/mis-clases', component: UserHorarioComponent },
-    { path: 'horario/mis-clases/editar-clase', component: EditarHorarioComponent }
+    { path: 'horario/mis-clases/editar-clase/:id', component: EditarHorarioComponent }
 
 ];
 
