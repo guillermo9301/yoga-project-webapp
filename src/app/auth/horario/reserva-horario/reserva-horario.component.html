@@ -43,7 +43,7 @@
                         <label for="startTime" class="form-label">Horario
                             Inicio</label>
                         <input type="text" class="form-control"
-                            [value]="startTime"
+                            formControlName="horaInicio"
                             readonly>
                     </div>
                 </div>
@@ -52,23 +52,22 @@
                         <label for="endTime" class="form-label">Horario
                             Fin</label>
                         <input type="text" class="form-control"
-                            [value]="endTime" readonly>
+                            formControlName="horaFin" readonly>
                     </div>
                 </div>
             </div>
         </form>
-    </div>
-    <div style="display: flex; justify-content: space-evenly;">
-        <div class="mb-3 text-center">
-            <input type="submit" value="Reservar"
-                class="btn btn-primary py-3 px-5"
-                (click)="onSubmit()">
+        <div style="display: flex; justify-content: space-evenly;">
+            <div class="mb-3 text-center">
+                <input type="submit" value="Reservar"
+                    class="btn btn-primary py-3 px-5"
+                    (click)="onSubmit()">
+            </div>
+            <div class="mb-3 text-center">
+                <input type="submit" value="Cancelar"
+                    class="btn btn-primary py-3 px-5"
+                    (click)="cancel()">
+            </div>
         </div>
-        <div class="mb-3 text-center">
-            <input type="submit" value="Cancelar"
-                class="btn btn-primary py-3 px-5"
-                (click)="cancel()">
-        </div>
     </div>
-
 </section>

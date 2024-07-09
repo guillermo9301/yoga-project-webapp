@@ -10,13 +10,20 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EventsAdminComponent } from './events-admin/events-admin.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { NuevoEventoComponent } from './events-admin/nuevo-evento/nuevo-evento.component';
+import { EditEventoComponent } from './events-admin/edit-evento/edit-evento.component';
 
 
 @NgModule({
     declarations: [
         HomeAdminComponent,
         UsersComponent,
-        UserDetailsComponent
+        UserDetailsComponent,
+        EventsAdminComponent,
+        NuevoEventoComponent,
+        EditEventoComponent
     ],
     imports: [
         CommonModule,
@@ -25,7 +32,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         MatDialogModule,
         MatFormFieldModule,
         MatInputModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        FullCalendarModule
     ]
 })
 export class AdminModule { }

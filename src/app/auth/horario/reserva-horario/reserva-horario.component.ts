@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookRequest } from 'src/app/core/interfaces/bookRequest';
+import { AddAlumnoRequest, Evento, EventoDTO } from 'src/app/core/interfaces/eventDTO';
 import { User } from 'src/app/core/interfaces/user';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { EventService } from 'src/app/core/services/event.service';
 import { ScheduleService } from 'src/app/core/services/schedule.service';
 import Swal from 'sweetalert2';
 
@@ -13,22 +15,22 @@ import Swal from 'sweetalert2';
   styleUrls: ['./reserva-horario.component.css']
 })
 export class ReservaHorarioComponent {
-  day: string = '';
-  startTime: string = '';
-  endTime: string = '';
   userLoginOn?: boolean;
   userData?: User;
   reservationForm: any;
-  date: string = '';
+  idEvento!: number
+  eventData?: Evento
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private scheduleService: ScheduleService,
+    private eventService: EventService,
     private fb: FormBuilder) {
     this.reservationForm = this.fb.group({
-      id_alumno: [''],
+      fecha: [''],
+      horaInicio: [''],
+      horaFin: [''],
       nombre: ['', Validators.required],
       correo: ['', Validators.required],
       apellido_paterno: ['', Validators.required],
@@ -44,21 +46,25 @@ export class ReservaHorarioComponent {
     this.authService.currentUserData.subscribe({
       next: (userData) => {
         this.userData = userData;
-        this.setValues();
+        this.setUserValues();
       }
     });
   }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      this.day = params['day'] || '';
-      this.startTime = params['start'] || '';
-      this.endTime = params['end'] || '';
-      this.date = params['date'] || ''
+      this.idEvento = params['eventId']
+
+      this.eventService.getEventById(this.idEvento).subscribe({
+        next: (data: Evento) => {
+          this.eventData = data
+          this.setEventValues()
+        }
+      })
     });
   }
 
-  private setValues(): void {
+  private setUserValues(): void {
     if (this.userData) {
       this.reservationForm.controls['nombre'].setValue(this.userData.nombre);
       this.reservationForm.controls['correo'].setValue(this.userData.correo);
@@ -67,6 +73,14 @@ export class ReservaHorarioComponent {
     }
   }
 
+  private setEventValues(): void {
+    if (this.eventData) {
+      this.reservationForm.controls['fecha'].setValue(this.eventData.fecha);
+      this.reservationForm.controls['horaInicio'].setValue(this.eventData.horaInicio)
+      this.reservationForm.controls['horaFin'].setValue(this.eventData.horaFin)
+      //TODO: mostrar cupos libres
+    }
+  }
   onSubmit() {
     if (this.reservationForm.invalid) {
       Swal.fire({
@@ -77,24 +91,20 @@ export class ReservaHorarioComponent {
       return
     }
 
-    const usuario = this.userData
     const payload = {
-      fecha: this.date,
-      hora_inicio: this.startTime,
-      hora_fin: this.endTime,
-      id_alumno: usuario?.id,
-      nombre_alumno: usuario?.nombre,
-      correo: usuario?.correo,
-      apellido_paterno_alumno: usuario?.apellido_paterno,
-      apellido_materno_alumno: usuario?.apellido_materno,
+      eventId: this.eventData?.id,
+      alumnoId: this.userData?.id
     }
 
-    this.scheduleService.createOrUpdateSchedule(payload as BookRequest).subscribe({
+    console.log("payload" + payload)
+
+
+    this.eventService.addAlumno(payload as AddAlumnoRequest).subscribe({
       next: (response) => {
         Swal.fire({
           icon: "success",
           title: "Éxito",
-          text: `Se realizó la reserva exitosamente para el dia ${response.fecha} a las ${response.hora_inicio}`
+          text: `Se realizó la reserva exitosamente para el dia `
         })
       },
       error: (err) => {

@@ -1,0 +1,78 @@
+<section class="background-section"
+    style="background-image: url(assets/images/yoga.jpg);">
+    <div class="col-md-6 formulario">
+        <form [formGroup]="newEventForm" class="contact-form">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="fecha" class="form-label">Fecha</label>
+                        <input type="date" class="form-control"
+                            formControlName="fecha">
+                        <div class="text-danger"
+                            *ngIf="newEventForm.get('fecha')!.invalid && (newEventForm.get('fecha')!.dirty || newEventForm.get('fecha')!.touched)">
+                            <div
+                                *ngIf="newEventForm.get('fecha')!.errors?.['required']">Debe
+                                seleccionar una fecha</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="horaInicio" class="form-label">Hora de
+                            Inicio</label>
+                        <input type="time" class="form-control"
+                            formControlName="horaInicio">
+                        <div class="text-danger"
+                            *ngIf="newEventForm.get('horaInicio')!.invalid && (newEventForm.get('horaInicio')!.dirty || newEventForm.get('horaInicio')!.touched)">
+                            <div
+                                *ngIf="newEventForm.get('horaInicio')!.errors?.['required']">Debe
+                                indicar la hora de inicio</div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="horaFin" class="form-label">Hora de
+                            Fin</label>
+                        <input type="time" class="form-control"
+                            formControlName="horaFin">
+                        <div class="text-danger"
+                            *ngIf="newEventForm.get('horaFin')!.invalid && (newEventForm.get('horaFin')!.dirty || newEventForm.get('horaFin')!.touched)">
+                            <div
+                                *ngIf="newEventForm.get('horaFin')!.errors?.['required']">Debe
+                                indicar la hora de Fin</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="capacidad"
+                            class="form-label">Capacidad</label>
+                        <input type="number" class="form-control"
+                            formControlName="capacidad">
+                        <div class="text-danger"
+                            *ngIf="newEventForm.get('capacidad')!.invalid && (newEventForm.get('capacidad')!.dirty || newEventForm.get('capacidad')!.touched)">
+                            <div
+                                *ngIf="newEventForm.get('capacidad')!.errors?.['required']">Debe
+                                indicar la capacidad del evento</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div style="display: flex; justify-content: space-evenly;">
+            <div class="mb-3 text-center">
+                <input type="submit" value="Crear"
+                    class="btn btn-primary py-3 px-5"
+                    (click)="onSubmit()">
+            </div>
+            <div class="mb-3 text-center">
+                <input type="submit" value="Cancelar"
+                    class="btn btn-primary py-3 px-5"
+                    (click)="cancel()">
+            </div>
+        </div>
+    </div>
+
+</section>

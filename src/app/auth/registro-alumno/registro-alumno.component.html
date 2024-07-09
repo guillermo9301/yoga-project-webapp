@@ -6,7 +6,8 @@
     <!-- /.card-header -->
 
     <!-- form start -->
-    <form [formGroup]="registerForm" class="contact-form  d-flex flex-column align-items-center">
+    <form [formGroup]="registerForm"
+        class="contact-form  d-flex flex-column align-items-center">
         <div class="card-body  w-100 ">
 
             <div class="mb-3">
@@ -20,13 +21,13 @@
                             formControlName="nombre">
                     </div>
                 </div>
-                <div class="text-danger  "
+                <div class="text-danger"
                     *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
                     <div
                         *ngIf="nombre.errors?.['required']">Debe
                         ingresar su nombre</div>
                 </div>
-           
+
             </div>
 
             <div class="mb-3">
@@ -144,7 +145,8 @@
                         class="col-sm-2 col-form-label label-rosado">Nro. de
                         Documento</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" placeholder="Nro Documento"
+                        <input type="text" class="form-control"
+                            placeholder="Nro Documento"
                             id="inputNroDocumento"
                             formControlName="nro_documento">
                     </div>
@@ -180,7 +182,7 @@
             <div class="form-group row">
                 <label for="celular"
                     class="col-sm-2 col-form-label label-rosado">Celular</label>
-                <div class="col-sm-6" >
+                <div class="col-sm-6">
                     <input type="tel" class="form-control"
                         id="inputCelular3" placeholder="Celular"
                         formControlName="celular">
@@ -188,17 +190,17 @@
             </div>
         </div>
         <!-- /.card-body -->
-      
+
     </form>
 
     <div class="card-footer d-flex justify-content-center gap-3">
         <button type="submit" (click)="onSubmit()"
-        class="btn btn-primary py-3 px-4">Crear cuenta</button>
-        
+            class="btn btn-primary py-3 px-4">Crear cuenta</button>
+
         <button type="submit"
-        class="btn btn-primary  py-3 px-4"
+            class="btn btn-primary  py-3 px-4"
             (click)="cancel()">Cancelar</button>
-            
+
     </div>
     <!-- /.card-footer -->
 </div>
