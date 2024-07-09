@@ -14,6 +14,7 @@ import { FooterComponent } from '../core/components/footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReservationListComponent } from './reservation/reservation-list/reservation-list.component';
 import { ReservationEditComponent } from './reservation/reservation-edit/reservation-edit.component';
+import { PaymentsComponent } from './payments/payments.component';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import { ReservationEditComponent } from './reservation/reservation-edit/reserva
         ReservationComponent,
         FooterComponent,
         ReservationListComponent,
-        ReservationEditComponent
+        ReservationEditComponent,
+        PaymentsComponent
     ],
     imports: [
         CommonModule,

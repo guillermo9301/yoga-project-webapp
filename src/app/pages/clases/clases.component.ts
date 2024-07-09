@@ -26,4 +26,9 @@ export class ClasesComponent {
         }
     }
 
+    setPrice(price: number) {
+        localStorage.setItem('selectedPrice', price.toString());
+        this.router.navigate(['/pago']);
+    }
+
 }
