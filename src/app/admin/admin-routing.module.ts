@@ -7,6 +7,9 @@ import { UserDetailsComponent } from './users/user-details/user-details.componen
 import { EventsAdminComponent } from './events-admin/events-admin.component';
 import { NuevoEventoComponent } from './events-admin/nuevo-evento/nuevo-evento.component';
 import { EditEventoComponent } from './events-admin/edit-evento/edit-evento.component';
+import { PaqueteAdminComponent } from './paquete-admin/paquete-admin.component';
+import { EditPaqueteComponent } from './paquete-admin/edit-paquete/edit-paquete.component';
+import { NuevoPaqueteComponent } from './paquete-admin/nuevo-paquete/nuevo-paquete.component';
 
 const routes: Routes = [
     { path: 'home-admin', component: HomeAdminComponent },
@@ -14,7 +17,10 @@ const routes: Routes = [
     { path: 'user/user-details/:id', component: UserDetailsComponent },
     { path: 'events', component: EventsAdminComponent },
     { path: 'events/nuevo-evento', component: NuevoEventoComponent },
-    { path: 'events/edit-evento', component: EditEventoComponent }
+    { path: 'events/edit-evento', component: EditEventoComponent },
+    { path: 'paquetes', component: PaqueteAdminComponent },
+    { path: 'paquetes/edit-paquete', component: EditPaqueteComponent },
+    { path: 'paquetes/nuevo-paquete', component: NuevoPaqueteComponent }
 ];
 
 @NgModule({

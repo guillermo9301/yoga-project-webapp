@@ -14,6 +14,9 @@ import { EventsAdminComponent } from './events-admin/events-admin.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { NuevoEventoComponent } from './events-admin/nuevo-evento/nuevo-evento.component';
 import { EditEventoComponent } from './events-admin/edit-evento/edit-evento.component';
+import { PaqueteAdminComponent } from './paquete-admin/paquete-admin.component';
+import { EditPaqueteComponent } from './paquete-admin/edit-paquete/edit-paquete.component';
+import { NuevoPaqueteComponent } from './paquete-admin/nuevo-paquete/nuevo-paquete.component';
 
 
 @NgModule({
@@ -23,7 +26,10 @@ import { EditEventoComponent } from './events-admin/edit-evento/edit-evento.comp
         UserDetailsComponent,
         EventsAdminComponent,
         NuevoEventoComponent,
-        EditEventoComponent
+        EditEventoComponent,
+        PaqueteAdminComponent,
+        EditPaqueteComponent,
+        NuevoPaqueteComponent
     ],
     imports: [
         CommonModule,

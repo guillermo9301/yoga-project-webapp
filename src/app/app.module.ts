@@ -16,13 +16,15 @@ import { ErrorInterceptorService } from './core/interceptors/error-interceptor.s
 import { AuthService } from './core/services/auth.service';
 import { UserService } from './core/services/user.service';
 import { AttendanceComponent } from './instructor/attendance/attendance.component';
+import { EditPaqueteComponent } from './src/app/admin/paquete-admin/edit-paquete/edit-paquete.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    AttendanceComponent
+    AttendanceComponent,
+    EditPaqueteComponent
   ],
   imports: [
     BrowserModule,
