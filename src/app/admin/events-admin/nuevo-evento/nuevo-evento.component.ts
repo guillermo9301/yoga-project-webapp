@@ -30,7 +30,7 @@ export class NuevoEventoComponent implements OnInit {
             horaFin: ['', Validators.required],
             capacidad: ['', Validators.required],
             recurrente: [false, Validators.required],
-            fechaFinRecurrencia: ['', Validators.required]
+            fechaFinRecurrencia: ['']
         })
 
         this.authService.currentUserLoginOn.subscribe({

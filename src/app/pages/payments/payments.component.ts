@@ -6,6 +6,11 @@ import { PaqueteService } from 'src/app/core/services/paquete.service';
 import { Paquete } from 'src/app/core/interfaces/paquete';
 import { PaymentService } from 'src/app/core/services/payment.service';
 import { Payment } from 'src/app/core/interfaces/payment';
+import { SuscriptionService } from 'src/app/core/services/suscription.service';
+import { Suscription, SuscriptionDTO } from 'src/app/core/interfaces/SuscriptionDTO';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { User } from 'src/app/core/interfaces/user';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-payments',
@@ -15,12 +20,15 @@ import { Payment } from 'src/app/core/interfaces/payment';
 export class PaymentsComponent implements OnInit {
   paymentForm: FormGroup;
   paquete: Paquete | undefined;
+  userData!: User
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private paqueteService: PaqueteService,
-    private paymentService: PaymentService
+    private paymentService: PaymentService,
+    private suscriptionService: SuscriptionService,
+    private authService: AuthService
   ) {
     this.paymentForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -29,7 +37,7 @@ export class PaymentsComponent implements OnInit {
       expiryDate: ['', [Validators.required, Validators.pattern('(0[1-9]|1[0-2])\\/([0-9]{2})')]],
       cvc: ['', [Validators.required, Validators.pattern('[0-9]{3}')]],
       cardHolderName: ['', Validators.required],
-      paqueteId: ['', Validators.required] 
+      paqueteId: ['', Validators.required]
     });
   }
 
@@ -41,7 +49,7 @@ export class PaymentsComponent implements OnInit {
           this.paquete = paquete;
           if (this.paquete) {
             this.paymentForm.patchValue({
-              paqueteId: paquete.id 
+              paqueteId: paquete.id
             });
           }
         },
@@ -50,6 +58,12 @@ export class PaymentsComponent implements OnInit {
         }
       });
     });
+
+    this.authService.currentUserData.subscribe({
+      next: (data) => {
+        this.userData = data
+      }
+    })
   }
 
   formatCardNumber(event: any): void {
@@ -84,6 +98,18 @@ export class PaymentsComponent implements OnInit {
         cantidadDias: this.paquete?.cantidadDias ?? 0
       }
     };
+
+    const suscriptionPayload: Suscription = {
+      alumno: this.userData,
+      paquete: this.paquete!
+    }
+
+    this.suscriptionService.createSuscription(suscriptionPayload).subscribe({
+      next: (response: SuscriptionDTO) => {
+        console.log("Suscripcion creada: ", response)
+      }
+    })
+
 
     this.paymentService.createPayment(paymentData).subscribe({
       next: (response) => {
