@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { AddAlumnoRequest, Evento, EventoDTO, RemoveAlumnoRequest } from '../interfaces/eventDTO';
+import { AddAlumnoRequest, Evento, EventoDTO, NuevoEventoDTO, RemoveAlumnoRequest } from '../interfaces/eventDTO';
 import { AuthService } from './auth.service';
 import { User } from '../interfaces/user';
 import { Usuario } from '../interfaces/users-list';
@@ -39,7 +39,7 @@ export class EventService {
     return url
   }
 
-  createEvent(eventData: EventoDTO): Observable<EventoDTO> {
+  createEvent(eventData: NuevoEventoDTO): Observable<EventoDTO> {
     return this.http.post<EventoDTO>(environment.url + this.collection + '/create', eventData)
   }
 

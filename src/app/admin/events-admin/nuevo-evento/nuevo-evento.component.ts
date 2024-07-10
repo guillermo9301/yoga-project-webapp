@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { EventoDTO } from 'src/app/core/interfaces/eventDTO';
+import { EventoDTO, NuevoEventoDTO } from 'src/app/core/interfaces/eventDTO';
 import { User } from 'src/app/core/interfaces/user';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { EventService } from 'src/app/core/services/event.service';
@@ -28,7 +28,9 @@ export class NuevoEventoComponent implements OnInit {
             fecha: ['', Validators.required],
             horaInicio: ['', Validators.required],
             horaFin: ['', Validators.required],
-            capacidad: ['', Validators.required]
+            capacidad: ['', Validators.required],
+            recurrente: [false, Validators.required],
+            fechaFinRecurrencia: ['', Validators.required]
         })
 
         this.authService.currentUserLoginOn.subscribe({
@@ -61,7 +63,7 @@ export class NuevoEventoComponent implements OnInit {
 
         const payload = this.newEventForm.value
 
-        this.eventService.createEvent(payload as EventoDTO).subscribe({
+        this.eventService.createEvent(payload as NuevoEventoDTO).subscribe({
             next: (response) => {
                 Swal.fire({
                     icon: "success",

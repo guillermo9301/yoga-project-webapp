@@ -54,7 +54,7 @@ export class EventsAdminComponent implements OnInit {
                 this.listOfEvents = events.map(event => {
                     return {
                         id: event.id.toString(),
-                        title: `Capacidad: ${event.capacidad}`,
+                        title: `Capacidad: ${event.cuposDisponibles} de ${event.capacidad}`,
                         start: `${event.fecha}T${event.horaInicio}`,
                         end: `${event.fecha}T${event.horaFin}`,
                         url: this.eventService.generateEventUrl(event.id)

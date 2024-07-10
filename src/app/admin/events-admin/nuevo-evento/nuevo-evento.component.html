@@ -59,6 +59,44 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Recurrente" class="form-check-label">Evento
+                            recurrente?</label>
+                        <div class="radio-group">
+                            <div class="form-check">
+                                <input type="radio" id="recurrenteYes"
+                                    class="form-check-input"
+                                    formControlName="recurrente" [value]="true">
+                                <label class="form-check-label"
+                                    for="recurrenteYes">Sí</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" id="recurrenteNo"
+                                    class="form-check-input"
+                                    formControlName="recurrente"
+                                    [value]="false">
+                                <label for="recurrenteNo"
+                                    class="form-check-label">No</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="fechaFinRecurrencia"
+                            class="form-label">Fecha fin de recurrencia</label>
+                        <input type="date" class="form-control"
+                            formControlName="fechaFinRecurrencia">
+                        <div class="text-danger"
+                            *ngIf="newEventForm.get('fechaFinRecurrencia')!.invalid && (newEventForm.get('fechaFinRecurrencia')!.dirty || newEventForm.get('fechaFinRecurrencia')!.touched)">
+                            <div
+                                *ngIf="newEventForm.get('fechaFinRecurrencia')!.errors?.['required']">Debe
+                                seleccionar una fecha</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </form>
         <div style="display: flex; justify-content: space-evenly;">

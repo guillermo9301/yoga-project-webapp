@@ -22,3 +22,23 @@
     justify-content: center;
 
 }
+
+.radio-group {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.form-check {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.form-check-input {
+    margin-right: 10px;
+}
+
+.form-check-label {
+    margin: 0;
+}
