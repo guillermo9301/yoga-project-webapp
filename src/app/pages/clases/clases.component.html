@@ -48,15 +48,15 @@
         <h2 class="mb-1">Sesiones y costos</h2>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-3">
+    <div class="row" >
+      <div class="col-md-3" *ngFor="let paquete of paquetes"  >
         <div class="block-7">
           <div class="text-center">
             <h2 class="heading"></h2>
             <span class="price"><sup>S/</sup> <span
-                class="number">40</span></span>
+                class="number">{{ paquete.precio }}</span></span>
 
-            <h3 class="heading-2 my-4">1 clase</h3>
+                <h3 class="heading-2 my-4">{{ paquete.nombre }}</h3>
 
             <ul class="pricing-text mb-5">
               <li>Onetime Access To All Club</li>
@@ -65,159 +65,7 @@
               <li>Fitness Orientation</li>
             </ul>
 
-            <button (click)="setPrice(40)"
-              class="btn btn-primary d-block px-2 py-4">Empezar</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3 ">
-        <div class="block-7">
-          <div class="text-center">
-            <h2 class="heading"></h2>
-            <span class="price"><sup>S/</sup> <span
-                class="number">150</span></span>
-
-            <h3 class="heading-2 my-4">1 semana ilimitado</h3>
-
-            <ul class="pricing-text mb-5">
-              <li>Group Classes</li>
-              <li>Discuss Fitness Goals</li>
-              <li>Group Trainer</li>
-              <li>Fitness Orientation</li>
-            </ul>
-
-            <button (click)="setPrice(150)"
-              class="btn btn-primary d-block px-2 py-4">Empezar</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 ">
-        <div class="block-7">
-          <div class="text-center">
-            <h2 class="heading"></h2>
-            <span class="price"><sup>S/</sup> <span
-                class="number">250</span></span>
-
-            <h3 class="heading-2 my-4">12 clases en un mes</h3>
-
-            <ul class="pricing-text mb-5">
-              <li>Group Classes</li>
-              <li>Discuss Fitness Goals</li>
-              <li>Group Trainer</li>
-              <li>Fitness Orientation</li>
-            </ul>
-
-            <button (click)="setPrice(250)"
-              class="btn btn-primary d-block px-2 py-4">Empezar</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3 ">
-        <div class="block-7">
-          <div class="text-center">
-            <h2 class="heading"></h2>
-            <span class="price"><sup>S/</sup> <span
-                class="number">250</span></span>
-
-            <h3 class="heading-2 my-4">10 clases x 3 meses</h3>
-
-            <ul class="pricing-text mb-5">
-              <li>Group Classes</li>
-              <li>Discuss Fitness Goals</li>
-              <li>Group Trainer</li>
-              <li>Fitness Orientation</li>
-            </ul>
-
-            <button (click)="setPrice(250)"
-              class="btn btn-primary d-block px-2 py-4">Empezar</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3 ">
-        <div class="block-7">
-          <div class="text-center">
-            <h2 class="heading"></h2>
-            <span class="price"><sup>S/</sup> <span
-                class="number">200</span></span>
-
-            <h3 class="heading-2 my-4">1 mes limitado, nuevo</h3>
-
-            <ul class="pricing-text mb-5">
-              <li>Group Classes</li>
-              <li>Discuss Fitness Goals</li>
-              <li>Group Trainer</li>
-              <li>Fitness Orientation</li>
-            </ul>
-
-            <button (click)="setPrice(200)"
-              class="btn btn-primary d-block px-2 py-4">Empezar</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3 ">
-        <div class="block-7">
-          <div class="text-center">
-            <h2 class="heading"></h2>
-            <span class="price"><sup>S/</sup> <span
-                class="number">300</span></span>
-
-            <h3 class="heading-2 my-4">1 mes, 6am a 6pm</h3>
-
-            <ul class="pricing-text mb-5">
-              <li>Group Classes</li>
-              <li>Discuss Fitness Goals</li>
-              <li>Group Trainer</li>
-              <li>Fitness Orientation</li>
-            </ul>
-
-            <button (click)="setPrice(300)"
-              class="btn btn-primary d-block px-2 py-4">Empezar</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 ">
-        <div class="block-7">
-          <div class="text-center">
-            <h2 class="heading"></h2>
-            <span class="price"><sup>S/</sup> <span
-                class="number">220</span></span>
-
-            <h3 class="heading-2 my-4">1 mes ilimitado, 10am</h3>
-
-            <ul class="pricing-text mb-5">
-              <li>Group Classes</li>
-              <li>Discuss Fitness Goals</li>
-              <li>Group Trainer</li>
-              <li>Fitness Orientation</li>
-            </ul>
-
-            <button (click)="setPrice(220)"
-              class="btn btn-primary d-block px-2 py-4">Empezar</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3 ">
-        <div class="block-7">
-          <div class="text-center">
-            <h2 class="heading"></h2>
-            <span class="price"><sup>S/</sup> <span
-                class="number">500</span></span>
-
-            <h3 class="heading-2 my-4">2 meses limitado</h3>
-
-            <ul class="pricing-text mb-5">
-              <li>Group Classes</li>
-              <li>Discuss Fitness Goals</li>
-              <li>Group Trainer</li>
-              <li>Fitness Orientation</li>
-            </ul>
-
-            <button (click)="setPrice(500)"
+            <button (click)="setPagoporID(paquete.id)"
               class="btn btn-primary d-block px-2 py-4">Empezar</button>
           </div>
         </div>

@@ -1,0 +1,53 @@
+<section class="background-section" style="background-image: url(assets/images/yoga.jpg);">
+    <div class="col-md-6 formulario">
+      <form [formGroup]="newPaqueteForm" class="contact-form">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" formControlName="nombre">
+              <div class="text-danger" *ngIf="newPaqueteForm.get('nombre')?.invalid && (newPaqueteForm.get('nombre')?.dirty || newPaqueteForm.get('nombre')?.touched)">
+                <div *ngIf="newPaqueteForm.get('nombre')?.errors?.['required']">Debe colocar el nombre</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="precio" class="form-label">Precio</label>
+              <input type="text" class="form-control" formControlName="precio">
+              <div class="text-danger" *ngIf="newPaqueteForm.get('precio')?.invalid && (newPaqueteForm.get('precio')?.dirty || newPaqueteForm.get('precio')?.touched)">
+                <div *ngIf="newPaqueteForm.get('precio')?.errors?.['required']">Debe colocar el precio</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="cantidadClases" class="form-label">Cantidad clases</label>
+              <input type="text" class="form-control" formControlName="cantidadClases">
+              <div class="text-danger" *ngIf="newPaqueteForm.get('cantidadClases')?.invalid && (newPaqueteForm.get('cantidadClases')?.dirty || newPaqueteForm.get('cantidadClases')?.touched)">
+                <div *ngIf="newPaqueteForm.get('cantidadClases')?.errors?.['required']">Debe colocar la cantidad de clases</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="cantidadDias" class="form-label">Cantidad días</label>
+              <input type="text" class="form-control" formControlName="cantidadDias">
+              <div class="text-danger" *ngIf="newPaqueteForm.get('cantidadDias')?.invalid && (newPaqueteForm.get('cantidadDias')?.dirty || newPaqueteForm.get('cantidadDias')?.touched)">
+                <div *ngIf="newPaqueteForm.get('cantidadDias')?.errors?.['required']">Debe colocar la cantidad de dias</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div style="display: flex; justify-content: space-evenly;">
+        <div class="mb-3 text-center">
+          <input type="submit" value="Crear" class="btn btn-primary py-3 px-5" (click)="onSubmit()">
+        </div>
+        <div class="mb-3 text-center">
+          <input type="submit" value="Cancelar" class="btn btn-primary py-3 px-5" (click)="cancel()">
+        </div>
+      </div>
+    </div>
+  </section>
+  

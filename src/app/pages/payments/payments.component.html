@@ -3,12 +3,12 @@
     <div class="subscription-details">
       <a class="navbar-brand"><span></span>One Love Yoga</a>
       <h2>Suscribete a One love yoga</h2>
-      <p class="price">PEN {{ price }}.00 <span></span></p>
+      <p class="price">PEN {{ paquete?.precio }}.00  <span></span></p>
 
       <div class="total">
-        <p>Subtotal: PEN {{ price }}.00</p>
+        <p>Subtotal: PEN {{ paquete?.precio }}.00 </p>
         <p>IGV: PEN 0.00</p>
-        <p><strong>Total: PEN {{ price }}.00</strong></p>
+        <p><strong>Total: PEN {{ paquete?.precio }}.00</strong></p>
       </div>
     </div>
 
@@ -36,8 +36,9 @@
         <label for="cardholder-name">Nombre del titular de la Tarjeta</label>
         <input type="text" id="cardholder-name" formControlName="cardHolderName" placeholder="Nombre">
       </div>
-     
-      <button type="submit" >Suscríbete</button>
+      <input type="hidden" formControlName="paqueteId"> <!-- Campo oculto para el ID del paquete -->
+      <button type="submit">Suscríbete</button>
     </form>
   </div>
 </section>
+
