@@ -1,0 +1,44 @@
+<section class="subscription-form">
+  <div class="container">
+    <div class="subscription-details">
+      <a class="navbar-brand"><span></span>One Love Yoga</a>
+      <h2>Suscribete a One love yoga</h2>
+      <p class="price">PEN {{ paquete?.precio }}.00  <span></span></p>
+
+      <div class="total">
+        <p>Subtotal: PEN {{ paquete?.precio }}.00 </p>
+        <p>IGV: PEN 0.00</p>
+        <p><strong>Total: PEN {{ paquete?.precio }}.00</strong></p>
+      </div>
+    </div>
+
+    <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()" class="payment-form">
+      <h3>Paga con tarjeta</h3>
+      <div class="form-group">
+        <label for="email">Correo</label>
+        <input type="email" id="email" formControlName="email" placeholder="email@example.com">
+      </div>
+      <div class="form-group">
+        <label for="phone">Celular</label>
+        <input type="tel" id="phone" formControlName="phone" placeholder="912 345 678">
+      </div>
+      <div class="form-group">
+        <label for="card-number">Información de la Tarjeta</label>
+        <input type="text" id="card-number" formControlName="cardNumber" placeholder="1234 1234 1234 1234" (input)="formatCardNumber($event)">
+      </div>
+      <div class="form-group">
+        <input type="text" id="card-expiry" formControlName="expiryDate" placeholder="MM / YY">
+      </div>
+      <div class="form-group">
+        <input type="text" id="card-cvc" formControlName="cvc" placeholder="CVC">
+      </div>
+      <div class="form-group">
+        <label for="cardholder-name">Nombre del titular de la Tarjeta</label>
+        <input type="text" id="cardholder-name" formControlName="cardHolderName" placeholder="Nombre">
+      </div>
+      <input type="hidden" formControlName="paqueteId"> <!-- Campo oculto para el ID del paquete -->
+      <button type="submit">Suscríbete</button>
+    </form>
+  </div>
+</section>
+

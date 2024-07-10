@@ -12,6 +12,9 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { ReservationComponent } from './reservation/reservation.component';
 import { FooterComponent } from '../core/components/footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ReservationListComponent } from './reservation/reservation-list/reservation-list.component';
+import { ReservationEditComponent } from './reservation/reservation-edit/reservation-edit.component';
+import { PaymentsComponent } from './payments/payments.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +24,10 @@ import { ReactiveFormsModule } from '@angular/forms';
         ClasesComponent,
         CalendarComponent,
         ReservationComponent,
-        FooterComponent
+        FooterComponent,
+        ReservationListComponent,
+        ReservationEditComponent,
+        PaymentsComponent
     ],
     imports: [
         CommonModule,

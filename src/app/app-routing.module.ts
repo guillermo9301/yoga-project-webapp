@@ -7,6 +7,11 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { ClasesComponent } from './pages/clases/clases.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
 import { ReservationComponent } from './pages/reservation/reservation.component';
+import { PasswordRecoveryComponent } from './auth/password-recovery/password-recovery.component';
+import { ReservationListComponent } from './pages/reservation/reservation-list/reservation-list.component';
+import { ReservationEditComponent } from './pages/reservation/reservation-edit/reservation-edit.component';
+import { PaymentsComponent } from './pages/payments/payments.component';
+
 const routes: Routes = [
   { path: '', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule) },
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
@@ -17,6 +22,10 @@ const routes: Routes = [
   { path: 'clases', component: ClasesComponent },
   { path: 'calendario', component: CalendarComponent },
   { path: 'reserva', component: ReservationComponent },
+  { path: 'recovery', component: PasswordRecoveryComponent },
+  { path: 'reservationList', component: ReservationListComponent},
+  { path: 'reservationEdit', component: ReservationEditComponent},
+  { path: 'pago/:id', component: PaymentsComponent },
 ];
 
 @NgModule({

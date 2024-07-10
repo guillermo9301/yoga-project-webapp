@@ -5,6 +5,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import { LoginRequest } from 'src/app/core/interfaces/loginRequest';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'app-login',
@@ -56,12 +57,13 @@ export class LoginComponent implements OnInit {
                     this.loginForm.reset()
                 }
             })
-
-
-
         } else {
             this.loginForm.markAllAsTouched()
-            alert("Error al ingresar los datos")
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "Debe colocar sus credenciales"
+            })
         }
 
     }

@@ -31,10 +31,6 @@
                         routerLinkActive="active">Calendario</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/auth/login']"
-                        routerLinkActive="active">Blog</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" [routerLink]="['/contact']"
                         routerLinkActive="active">Contacto</a>
                 </li>
@@ -49,7 +45,7 @@
                 </li>
 
                 <li class="nav-item" *ngIf="userLoginOn">
-                    <a class="nav-link">
+                    <a class="nav-link" style="font-size: 12px !important;">
                         <img src="assets/images/avatar-default-icon.png"
                             class="avatar"
                             alt="User Avatar">
@@ -58,7 +54,9 @@
                 </li>
                 <li class="nav-item"
                     *ngIf="userLoginOn && userData?.rol == 'ADMIN'">
-                    <a class="nav-link">
+                    <a class="nav-link" [routerLink]="['/admin/home-admin']"
+                        routerLinkActive="active"
+                        style="font-size: 12px !important;">
                         ADMIN
                     </a>
                 </li>

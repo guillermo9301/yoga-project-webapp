@@ -1,42 +1,88 @@
-import { Component } from '@angular/core';
-import { CalendarOptions } from '@fullcalendar/core';
+import { Component, OnInit } from '@angular/core';
+import { CalendarOptions, EventInput } from '@fullcalendar/core';
 import timeGridPlugin from '@fullcalendar/timegrid'
-import interactionPlugin, { DateClickArg } from '@fullcalendar/interaction'
+import interactionPlugin from '@fullcalendar/interaction'
 import { Router } from '@angular/router';
-import { INITIAL_EVENTS } from 'src/app/event-utils';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { EventService } from 'src/app/core/services/event.service';
+import { Evento } from 'src/app/core/interfaces/eventDTO';
 
 @Component({
     selector: 'app-calendar',
     templateUrl: './calendar.component.html',
     styleUrls: ['./calendar.component.css']
 })
-export class CalendarComponent {
+export class CalendarComponent implements OnInit {
     today: string = new Date().toISOString().replace(/T.*$/, '')
+    userLogin?: boolean
+    listOfEvents: EventInput[] = []
+    calendarOptions: CalendarOptions;
 
-    constructor(private router: Router) {
+    constructor(
+        private router: Router,
+        private authService: AuthService,
+        private eventService: EventService) {
         console.log('fecha de hoy: ' + this.today)
+        this.calendarOptions = {
+            initialView: 'timeGridWeek',
+            slotMinTime: '06:00:00',
+            slotMaxTime: '22:00:00',
+            allDaySlot: false,
+            plugins: [
+                timeGridPlugin,
+                interactionPlugin,
+            ],
+            events: [],
+            editable: true,
+            eventClick: this.handleEventClick.bind(this)
+        };
     }
 
-    calendarOptions: CalendarOptions = {
-        initialView: 'timeGridWeek',
-        slotMinTime: '06:00:00',
-        slotMaxTime: '22:00:00',
-        allDaySlot: false,
-        plugins: [
-            timeGridPlugin,
-            interactionPlugin,
-        ],
-        events: INITIAL_EVENTS,
-        editable: true,
-        eventClick: this.handleEventClick.bind(this)
-    };
+    ngOnInit(): void {
+
+        this.authService.currentUserLoginOn.subscribe({
+            next: (login) => {
+                this.userLogin = login
+            }
+        })
+
+        this.getEvents()
+    }
+
+    getEvents() {
+        this.eventService.getAllEvents().subscribe({
+            next: (events: Evento[]) => {
+                this.listOfEvents = events.map(event => {
+                    return {
+                        id: event.id.toString(),
+                        title: `Cupos: ${event.cuposDisponibles} de ${event.capacidad}`,
+                        start: `${event.fecha}T${event.horaInicio}`,
+                        end: `${event.fecha}T${event.horaFin}`,
+                        url: this.eventService.generateEventUrl(event.id)
+                    }
+                })
+                this.calendarOptions.events = this.listOfEvents
+
+            },
+            error: (err) => {
+                console.error('Error al obtener eventos' + err)
+            }
+        })
+    }
+
+
 
     handleEventClick(info: any) {
-        if (info.event.url) {
-            const eventDate = info.event.start.toISOString().split('T')[0]; // Obtener la fecha en formato YYYY-MM-DD
-            const urlWithDate = `${info.event.url}&date=${eventDate}`;
-            this.router.navigateByUrl(urlWithDate); // Usa navigateByUrl para pasar la URL con parámetros
-            info.jsEvent.preventDefault(); // Evita el comportamiento predeterminado
+        if (this.userLogin) {
+            if (info.event.url) {
+                const eventDate = info.event.start.toISOString().split('T')[0];
+                const urlWithDate = `${info.event.url}&date=${eventDate}`;
+                this.router.navigateByUrl(urlWithDate);
+                info.jsEvent.preventDefault();
+            }
+        } else {
+            this.router.navigateByUrl("auth/login")
+            info.jsEvent.preventDefault();
         }
     }
 

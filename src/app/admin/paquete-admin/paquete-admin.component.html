@@ -1,0 +1,37 @@
+
+<div class="hero-wrap">
+  <div class="card-header">
+    <h3 class="card-title">Gestión de Paquetes</h3>
+    <div class="card-tools">
+      <div>
+        <a class="btn btn-primary" routerLink="nuevo-paquete">Crear Paquete</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body table-responsive p-0">
+    <table *ngIf="paquetes.length > 0" class="table table-hover text-nowrap">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Cantidad Días</th>
+          <th>Cantidad Clases</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let paquete of paquetes">
+          <td>{{ paquete.nombre }}</td>
+          <td>{{ paquete.precio }}</td>
+          <td>{{ paquete.cantidadDias }}</td>
+          <td>{{ paquete.cantidadClases }}</td>
+          <td>
+            <button class="btn btn-outline-primary" (click)="openEditModal(paquete.id)">Editar datos</button>
+        
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
