@@ -23,11 +23,11 @@ export class PaqueteAdminComponent implements OnInit {
     this.getPaquetes();
   }
 
- 
+
   getPaquetes(): void {
     this.paqueteService.getPaquetes().subscribe(paquetes => {
       this.paquetes = paquetes;
-      console.log(this.paquetes);  
+      console.log(this.paquetes);
     });
   }
 
@@ -45,13 +45,13 @@ export class PaqueteAdminComponent implements OnInit {
     });
   }
 
-  deletePaquete(id: number): void {
+  /*deletePaquete(id: number): void {
     this.paqueteService.deletePaquete(id).subscribe(() => {
       this.paquetes = this.paquetes.filter(p => p.id !== id);
     });
-  }
+  }*/
 
-  eliminarPaquete(id: number): void {
+  /*eliminarPaquete(id: number): void {
     Swal.fire({
       icon: 'question',
       title: 'Eliminar paquete',
@@ -65,7 +65,7 @@ export class PaqueteAdminComponent implements OnInit {
         this.deletePaquete(id);
       }
     });
-  }
+  }*/
 
   openEditModal(paqueteId: number): void {
     const dialogRef = this.dialog.open(EditPaqueteComponent, {
