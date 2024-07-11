@@ -14,6 +14,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 export class CalendarComponent implements OnInit {
     today: string = new Date().toISOString().replace(/T.*$/, '')
     userLogin?: boolean
+    userData?: any
 
     constructor(private router: Router, private authService: AuthService) {
         console.log('fecha de hoy: ' + this.today)
@@ -23,6 +24,12 @@ export class CalendarComponent implements OnInit {
         this.authService.currentUserLoginOn.subscribe({
             next: (login) => {
                 this.userLogin = login
+            }
+        })
+        this.authService.currentUserData.subscribe({
+            next: (data) => {
+                this.userData = data
+                console.log(this.userData.rol)
             }
         })
     }
@@ -43,7 +50,13 @@ export class CalendarComponent implements OnInit {
 
     handleEventClick(info: any) {
         if (this.userLogin) {
-            if (info.event.url) {
+            console.log(this.userData.rol)
+            if (this.userData.rol === 'ADMIN') {
+                this.router.navigateByUrl("admin/alumnos-list")
+                
+                return
+            }
+            else{
                 const eventDate = info.event.start.toISOString().split('T')[0];
                 const urlWithDate = `${info.event.url}&date=${eventDate}`;
                 this.router.navigateByUrl(urlWithDate);
