@@ -60,6 +60,14 @@
                         ADMIN
                     </a>
                 </li>
+                <li class="nav-item"
+                    *ngIf="userLoginOn && userData?.rol == 'ALUMNO'">
+                    <a class="nav-link" [routerLink]="['']"
+                        routerLinkActive="active"
+                        style="font-size: 12px !important;">
+                        ALUMNO
+                    </a>
+                </li>
                 <li class="nav-item" *ngIf="userLoginOn">
                     <a class="nav-link" (click)="logout()">
                         <fa-icon [icon]="faRightFromBracket" />
