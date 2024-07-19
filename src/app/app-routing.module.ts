@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { RegistroAlumnoComponent } from './auth/registro-alumno/registro-alumno.component';
-import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ClasesComponent } from './pages/clases/clases.component';
 import { CalendarComponent } from './pages/calendar/calendar.component';
@@ -11,6 +10,10 @@ import { PasswordRecoveryComponent } from './auth/password-recovery/password-rec
 import { ReservationListComponent } from './pages/reservation/reservation-list/reservation-list.component';
 import { ReservationEditComponent } from './pages/reservation/reservation-edit/reservation-edit.component';
 import { PaymentsComponent } from './pages/payments/payments.component';
+import { AboutComponent } from './pages/about/about.component';
+import { AuthGuard } from './core/guards/auth.guard';
+import { RoleGuard } from './core/guards/role.guard';
+import { AccessDeniedComponent } from './core/components/errors/access-denied/access-denied.component';
 
 const routes: Routes = [
   { path: '', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule) },
@@ -23,9 +26,10 @@ const routes: Routes = [
   { path: 'calendario', component: CalendarComponent },
   { path: 'reserva', component: ReservationComponent },
   { path: 'recovery', component: PasswordRecoveryComponent },
-  { path: 'reservationList', component: ReservationListComponent},
-  { path: 'reservationEdit', component: ReservationEditComponent},
-  { path: 'pago/:id', component: PaymentsComponent },
+  { path: 'reservationList', component: ReservationListComponent },
+  { path: 'reservationEdit', component: ReservationEditComponent },
+  { path: 'pago/:id', component: PaymentsComponent, canActivate: [AuthGuard, RoleGuard], data: { expectedRole: 'ALUMNO' } },
+  { path: 'access-denied', component: AccessDeniedComponent }
 ];
 
 @NgModule({
