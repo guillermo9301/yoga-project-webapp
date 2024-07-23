@@ -12,6 +12,8 @@ import { ReservaHorarioComponent } from './horario/reserva-horario/reserva-horar
 import { PasswordRecoveryComponent } from './password-recovery/password-recovery.component';
 import { UserHorarioComponent } from './horario/user-horario/user-horario.component';
 import { EditarHorarioComponent } from './horario/user-horario/editar-horario/editar-horario.component';
+import { AlumnoProfileComponent } from './alumno-profile/alumno-profile.component';
+import { SuscripcionComponent } from './alumno-profile/suscripcion/suscripcion.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { EditarHorarioComponent } from './horario/user-horario/editar-horario/ed
         ReservaHorarioComponent,
         PasswordRecoveryComponent,
         UserHorarioComponent,
-        EditarHorarioComponent
+        EditarHorarioComponent,
+        AlumnoProfileComponent,
+        SuscripcionComponent
 
     ],
     imports: [
