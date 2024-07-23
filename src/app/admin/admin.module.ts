@@ -10,6 +10,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AlumnosListComponent } from './alumnos-list/alumnos-list.component';
 import { EventsAdminComponent } from './events-admin/events-admin.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { NuevoEventoComponent } from './events-admin/nuevo-evento/nuevo-evento.component';
@@ -17,6 +18,7 @@ import { EditEventoComponent } from './events-admin/edit-evento/edit-evento.comp
 import { PaqueteAdminComponent } from './paquete-admin/paquete-admin.component';
 import { EditPaqueteComponent } from './paquete-admin/edit-paquete/edit-paquete.component';
 import { NuevoPaqueteComponent } from './paquete-admin/nuevo-paquete/nuevo-paquete.component';
+import { NuevoUsuarioComponent } from './users/nuevo-usuario/nuevo-usuario.component';
 
 
 @NgModule({
@@ -24,12 +26,14 @@ import { NuevoPaqueteComponent } from './paquete-admin/nuevo-paquete/nuevo-paque
         HomeAdminComponent,
         UsersComponent,
         UserDetailsComponent,
+        AlumnosListComponent,
         EventsAdminComponent,
         NuevoEventoComponent,
         EditEventoComponent,
         PaqueteAdminComponent,
         EditPaqueteComponent,
-        NuevoPaqueteComponent
+        NuevoPaqueteComponent,
+        NuevoUsuarioComponent
     ],
     imports: [
         CommonModule,
@@ -39,6 +43,7 @@ import { NuevoPaqueteComponent } from './paquete-admin/nuevo-paquete/nuevo-paque
         MatFormFieldModule,
         MatInputModule,
         ReactiveFormsModule,
+        FormsModule,
         FullCalendarModule
     ]
 })

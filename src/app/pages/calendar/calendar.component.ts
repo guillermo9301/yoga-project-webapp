@@ -17,6 +17,7 @@ export class CalendarComponent implements OnInit {
     userLogin?: boolean
     listOfEvents: EventInput[] = []
     calendarOptions: CalendarOptions;
+    userData?: any
 
     constructor(
         private router: Router,
@@ -43,6 +44,12 @@ export class CalendarComponent implements OnInit {
         this.authService.currentUserLoginOn.subscribe({
             next: (login) => {
                 this.userLogin = login
+            }
+        })
+        this.authService.currentUserData.subscribe({
+            next: (data) => {
+                this.userData = data
+                console.log(this.userData.rol)
             }
         })
 
@@ -74,7 +81,13 @@ export class CalendarComponent implements OnInit {
 
     handleEventClick(info: any) {
         if (this.userLogin) {
-            if (info.event.url) {
+            console.log(this.userData.rol)
+            if (this.userData.rol === 'ADMIN') {
+                this.router.navigateByUrl("admin/alumnos-list")
+                
+                return
+            }
+            else{
                 const eventDate = info.event.start.toISOString().split('T')[0];
                 const urlWithDate = `${info.event.url}&date=${eventDate}`;
                 this.router.navigateByUrl(urlWithDate);

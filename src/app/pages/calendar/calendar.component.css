@@ -1,0 +1,22 @@
+.circle-F{
+    width: auto;
+    height: 60px;
+    border-radius: 100%;
+    background-color: pink;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+.circle-M{
+    width: auto;
+    height: 60px;
+    border-radius: 100%;
+    background-color: #007bff;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
