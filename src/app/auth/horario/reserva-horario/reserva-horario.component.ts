@@ -104,7 +104,7 @@ export class ReservaHorarioComponent {
         Swal.fire({
           icon: "success",
           title: "Éxito",
-          text: `Se realizó la reserva exitosamente para el dia `
+          text: `Se realizó la reserva exitosamente para el dia ${response.fecha}`
         })
       },
       error: (err) => {

@@ -23,7 +23,8 @@ export class AuthService {
         apellido_paterno: '',
         apellido_materno: '',
         correo: '',
-        rol: ''
+        rol: '',
+        fecha_registro: ''
     })
 
     constructor(private http: HttpClient, private router: Router) {
@@ -105,7 +106,8 @@ export class AuthService {
                     apellido_paterno: '',
                     apellido_materno: '',
                     correo: '',
-                    rol: ''
+                    rol: '',
+                    fecha_registro: ''
                 });
                 this.router.navigateByUrl("/")
             }

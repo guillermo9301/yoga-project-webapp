@@ -40,7 +40,7 @@
   </div>
 </section>
 
-<section class="ftco-section bg-light">
+<section id="catalogo" class="ftco-section bg-light">
   <div class="container">
     <div class="row justify-content-center mb-5 pb-3">
       <div class="col-md-7 heading-section text-center">
@@ -48,15 +48,15 @@
         <h2 class="mb-1">Sesiones y costos</h2>
       </div>
     </div>
-    <div class="row" >
-      <div class="col-md-3" *ngFor="let paquete of paquetes"  >
+    <div class="row">
+      <div class="col-md-3" *ngFor="let paquete of paquetes">
         <div class="block-7">
           <div class="text-center">
             <h2 class="heading"></h2>
             <span class="price"><sup>S/</sup> <span
                 class="number">{{ paquete.precio }}</span></span>
 
-                <h3 class="heading-2 my-4">{{ paquete.nombre }}</h3>
+            <h3 class="heading-2 my-4">{{ paquete.nombre }}</h3>
 
             <ul class="pricing-text mb-5">
               <li>Onetime Access To All Club</li>

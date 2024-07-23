@@ -48,7 +48,7 @@ export class UsersComponent implements OnInit {
     })
 
     dialogRef.afterClosed().subscribe(result => {
-
+      this.loadUsers();
     })
   }
 

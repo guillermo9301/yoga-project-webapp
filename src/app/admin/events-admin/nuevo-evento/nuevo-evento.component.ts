@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { EventoDTO, NuevoEventoDTO } from 'src/app/core/interfaces/eventDTO';
+import { CrearEventoRequest } from 'src/app/core/interfaces/eventDTO';
 import { User } from 'src/app/core/interfaces/user';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { EventService } from 'src/app/core/services/event.service';
@@ -63,13 +63,22 @@ export class NuevoEventoComponent implements OnInit {
 
         const payload = this.newEventForm.value
 
-        this.eventService.createEvent(payload as NuevoEventoDTO).subscribe({
+        this.eventService.createEvent(payload as CrearEventoRequest).subscribe({
             next: (response) => {
-                Swal.fire({
-                    icon: "success",
-                    title: "Éxito",
-                    text: `Se creó el evento exitosamente para el dia ${response.fecha} a las ${response.horaInicio}`
-                })
+                if (response.recurrente === true) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Éxito",
+                        text: `${response.mensaje} con horario de ${response.horaInicio} a ${response.horaFin} desde el ${response.fechaInicio} hasta el ${response.fechaFinRecurrencia}`
+                    })
+                } else {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Éxito",
+                        text: `${response.mensaje} con horario de ${response.horaInicio} a ${response.horaFin} para el dia ${response.fechaInicio}`
+                    })
+                }
+
             },
             error: (err) => {
                 Swal.fire({
