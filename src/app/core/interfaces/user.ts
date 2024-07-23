@@ -5,5 +5,6 @@ export interface User {
     correo: string;
     apellido_paterno: string;
     apellido_materno: string;
-    rol: string
+    rol: string,
+    fecha_registro: string,
 }
