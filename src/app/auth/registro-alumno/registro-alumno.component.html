@@ -168,14 +168,17 @@
                         <input type="date" class="form-control"
                             id="inputFechaNacimiento3"
                             placeholder="Fecha de Nacimiento"
-                            formControlName="fec_nacimiento">
+                            formControlName="fec_nacimiento"
+                            [attr.max]="minDate">
                     </div>
                 </div>
                 <div class="text-danger"
                     *ngIf="fec_nacimiento.invalid && (fec_nacimiento.dirty || fec_nacimiento.touched)">
                     <div
                         *ngIf="fec_nacimiento.errors?.['required']">Debe
-                        ingresar su numero de documento</div>
+                        ingresar la fecha de nacimiento</div>
+                    <div *ngIf="fec_nacimiento.errors?.['minAge']">Debe tener al
+                        menos 12 años</div>
                 </div>
             </div>
 

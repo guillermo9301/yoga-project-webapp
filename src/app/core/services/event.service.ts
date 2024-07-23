@@ -51,8 +51,8 @@ export class EventService {
     return this.http.get<Evento[]>(environment.url + this.collection)
   }
 
-  updateEvent(eventId: number, eventData: EventoDTO): Observable<Evento> {
-    return this.http.put<Evento>(environment.url + this.collection + '/update/' + eventId, eventData)
+  updateEvent(eventId: number, eventData: EventoDTO): Observable<EventoDTO> {
+    return this.http.put<EventoDTO>(environment.url + this.collection + '/update/' + eventId, eventData)
   }
 
   addAlumno(addRequest: AddAlumnoRequest): Observable<Evento> {

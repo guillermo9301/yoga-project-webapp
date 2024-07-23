@@ -7,12 +7,15 @@
                     <div class="form-group">
                         <label for="fecha" class="form-label">Fecha</label>
                         <input type="date" class="form-control"
-                            formControlName="fecha">
+                            formControlName="fecha" [attr.min]="today">
                         <div class="text-danger"
                             *ngIf="newEventForm.get('fecha')!.invalid && (newEventForm.get('fecha')!.dirty || newEventForm.get('fecha')!.touched)">
                             <div
                                 *ngIf="newEventForm.get('fecha')!.errors?.['required']">Debe
                                 seleccionar una fecha</div>
+                            <div
+                                *ngIf="newEventForm.get('fecha')!.errors?.['futureDate']">La
+                                fecha debe ser futura</div>
                         </div>
                     </div>
                 </div>
@@ -21,12 +24,21 @@
                         <label for="horaInicio" class="form-label">Hora de
                             Inicio</label>
                         <input type="time" class="form-control"
-                            formControlName="horaInicio">
+                            formControlName="horaInicio"
+                            [attr.min]="defaultStartTime">
                         <div class="text-danger"
                             *ngIf="newEventForm.get('horaInicio')!.invalid && (newEventForm.get('horaInicio')!.dirty || newEventForm.get('horaInicio')!.touched)">
                             <div
                                 *ngIf="newEventForm.get('horaInicio')!.errors?.['required']">Debe
                                 indicar la hora de inicio</div>
+                            <div
+                                *ngIf="newEventForm.get('horaInicio')!.errors?.['startTimeAfterEndTime']">La
+                                hora de inicio debe ser anterior a la hora de
+                                fin</div>
+                            <div
+                                *ngIf="newEventForm.get('horaInicio')!.errors?.['startTimeBeforeCurrentTime']">La
+                                hora de inicio no puede ser anterior a la hora
+                                actual</div>
                         </div>
                     </div>
 
@@ -88,7 +100,8 @@
                         <label for="fechaFinRecurrencia"
                             class="form-label">Fecha fin de recurrencia</label>
                         <input type="date" class="form-control"
-                            formControlName="fechaFinRecurrencia">
+                            formControlName="fechaFinRecurrencia"
+                            [attr.min]="minRecurrenceDate">
                         <div class="text-danger"
                             *ngIf="newEventForm.get('fechaFinRecurrencia')!.invalid && (newEventForm.get('fechaFinRecurrencia')!.dirty || newEventForm.get('fechaFinRecurrencia')!.touched)">
                             <div

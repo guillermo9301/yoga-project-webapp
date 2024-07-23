@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { RegisterRequest } from 'src/app/core/interfaces/registerRequest';
 import { AuthService } from 'src/app/core/services/auth.service';
 import Swal from 'sweetalert2';
+import { minAgeValidator } from 'src/app/core/validators/minAgeValidator';
+import * as moment from 'moment';
 
 @Component({
     selector: 'app-registro-alumno',
@@ -11,6 +13,8 @@ import Swal from 'sweetalert2';
     styleUrls: ['./registro-alumno.component.css']
 })
 export class RegistroAlumnoComponent implements OnInit {
+
+    minDate: string;
     alumno = {
         correo: '',
         password: '',
@@ -30,13 +34,16 @@ export class RegistroAlumnoComponent implements OnInit {
         apellido_materno: ['', Validators.required],
         correo: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(8)]],
-        fec_nacimiento: [''],
+        fec_nacimiento: ['', [Validators.required, minAgeValidator(12)]],
         id_tipo_documento: ['', Validators.required],
         nro_documento: ['', Validators.required],
         celular: ['']
     })
 
-    constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) { }
+    constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
+        const today = moment();
+        this.minDate = today.subtract(12, 'years').format('YYYY-MM-DD');
+    }
 
 
     ngOnInit(): void {
@@ -89,6 +96,11 @@ export class RegistroAlumnoComponent implements OnInit {
                 },
                 error: (errorData) => {
                     console.error(errorData)
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error en el registro',
+                        text: errorData.error
+                    })
                 },
                 complete: () => {
                     // Muestra swettalert de exito

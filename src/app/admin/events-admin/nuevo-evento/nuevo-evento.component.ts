@@ -6,6 +6,9 @@ import { User } from 'src/app/core/interfaces/user';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { EventService } from 'src/app/core/services/event.service';
 import Swal from 'sweetalert2';
+import * as moment from 'moment';
+import { ChangeDetectorRef } from '@angular/core';
+import { asyncValidator } from 'src/app/core/validators/eventValidators';
 
 @Component({
     selector: 'app-nuevo-evento',
@@ -17,17 +20,31 @@ export class NuevoEventoComponent implements OnInit {
     newEventForm: FormGroup;
     userLoginOn?: boolean;
     userData?: User;
+    today: string;
+    currentTime: string;
+    defaultStartTime: string
+    defaultEndTime: string;
+    minRecurrenceDate?: string;
+
 
     constructor(
         private eventService: EventService,
         private fb: FormBuilder,
         private authService: AuthService,
-        private router: Router) {
+        private router: Router,
+        private cdr: ChangeDetectorRef) {
+
+        const now = moment();
+        this.today = now.format('YYYY-MM-DD');
+        this.currentTime = now.format('HH:mm');
+        this.defaultStartTime = now.format('HH:mm');
+        this.defaultEndTime = now.add(1, 'hour').format('HH:mm');
+        this.minRecurrenceDate = this.today;
 
         this.newEventForm = this.fb.group({
-            fecha: ['', Validators.required],
-            horaInicio: ['', Validators.required],
-            horaFin: ['', Validators.required],
+            fecha: [this.today, [Validators.required], [asyncValidator()]],
+            horaInicio: [this.defaultStartTime, Validators.required],
+            horaFin: [this.defaultEndTime, Validators.required],
             capacidad: ['', Validators.required],
             recurrente: [false, Validators.required],
             fechaFinRecurrencia: ['']
@@ -44,10 +61,24 @@ export class NuevoEventoComponent implements OnInit {
                 this.userData = userData;
             }
         });
+
+        this.newEventForm.get('fecha')?.valueChanges.subscribe(selectedDate => {
+            this.updateMinRecurrenceDate(selectedDate);
+        });
+
     }
 
     ngOnInit(): void {
 
+    }
+
+    updateMinRecurrenceDate(selectedDate: string): void {
+        if (selectedDate) {
+            this.minRecurrenceDate = selectedDate;
+        } else {
+            this.minRecurrenceDate = this.today;
+        }
+        this.cdr.detectChanges();
     }
 
     onSubmit() {
@@ -84,7 +115,7 @@ export class NuevoEventoComponent implements OnInit {
                 Swal.fire({
                     icon: "error",
                     title: "Error",
-                    text: "Ocurrió un error al crear el evento"
+                    text: err.error
                 })
                 console.error(err)
             },

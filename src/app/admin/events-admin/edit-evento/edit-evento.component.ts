@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EventoDTO } from 'src/app/core/interfaces/eventDTO';
+import { Evento, EventoDTO } from 'src/app/core/interfaces/eventDTO';
 import { User } from 'src/app/core/interfaces/user';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { EventService } from 'src/app/core/services/event.service';
@@ -51,7 +51,7 @@ export class EditEventoComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.eventId = +params['id']
       this.eventService.getEventById(this.eventId).subscribe({
-        next: (data: EventoDTO) => {
+        next: (data: Evento) => {
           this.editEventForm.patchValue(data)
         }
       })
@@ -70,12 +70,12 @@ export class EditEventoComponent implements OnInit {
 
     if (this.editEventForm.valid) {
       this.eventService.updateEvent(this.eventId, this.editEventForm.value as EventoDTO).subscribe({
-        next: (updatedEvent) => {
+        next: (updatedEvent: EventoDTO) => {
           console.log(updatedEvent)
           Swal.fire({
             icon: 'success',
             title: 'Éxito',
-            text: `Se actualizó el evenbto con id: ${updatedEvent.id} correctamente`
+            text: updatedEvent.mensaje
           })
         },
         error: (error) => {

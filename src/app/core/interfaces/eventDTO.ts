@@ -20,6 +20,7 @@ export interface CrearEventoResponse {
     recurrente: boolean
 }
 export interface EventoDTO {
+    mensaje: string,
     fecha: string,
     horaInicio: string,
     horaFin: string,
