@@ -1,0 +1,62 @@
+<div class="modal-content">
+    <div class="modal-header">
+      <h2>Editar Paquete</h2>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="paqueteForm" class="contact-form d-flex flex-column">
+        <div class="mb-3">
+          <div class="form-group row">
+            <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre">
+            </div>
+          </div>
+          <div class="text-danger" *ngIf="paqueteForm.get('nombre')?.invalid && (paqueteForm.get('nombre')?.dirty || paqueteForm.get('nombre')?.touched)">
+            <div *ngIf="paqueteForm.get('nombre')?.errors?.['required']">Debe ingresar un nombre</div>
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <div class="form-group row">
+            <label for="precio" class="col-sm-2 col-form-label">Precio</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" placeholder="Precio" formControlName="precio">
+            </div>
+          </div>
+          <div class="text-danger" *ngIf="paqueteForm.get('precio')?.invalid && (paqueteForm.get('precio')?.dirty || paqueteForm.get('precio')?.touched)">
+            <div *ngIf="paqueteForm.get('precio')?.errors?.['required']">Debe ingresar el precio</div>
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <div class="form-group row">
+            <label for="cantidadDias" class="col-sm-2 col-form-label">Cantidad de días</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" placeholder="Cantidad de días" formControlName="cantidadDias">
+            </div>
+          </div>
+          <div class="text-danger" *ngIf="paqueteForm.get('cantidadDias')?.invalid && (paqueteForm.get('cantidadDias')?.dirty || paqueteForm.get('cantidadDias')?.touched)">
+            <div *ngIf="paqueteForm.get('cantidadDias')?.errors?.['required']">Debe ingresar la cantidad de días</div>
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <div class="form-group row">
+            <label for="cantidadClases" class="col-sm-2 col-form-label">Cantidad de clases</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" placeholder="Cantidad de clases" formControlName="cantidadClases">
+            </div>
+          </div>
+          <div class="text-danger" *ngIf="paqueteForm.get('cantidadClases')?.invalid && (paqueteForm.get('cantidadClases')?.dirty || paqueteForm.get('cantidadClases')?.touched)">
+            <div *ngIf="paqueteForm.get('cantidadClases')?.errors?.['required']">Debe ingresar la cantidad de clases</div>
+          </div>
+        </div>
+  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="onNoClick()">Cancelar</button>
+          <button type="button" class="btn btn-primary" (click)="save()">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

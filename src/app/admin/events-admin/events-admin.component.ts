@@ -1,23 +1,22 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CalendarOptions, EventInput } from '@fullcalendar/core';
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { EventService } from 'src/app/core/services/event.service';
 import { Evento } from 'src/app/core/interfaces/eventDTO';
 
 @Component({
-    selector: 'app-calendar',
-    templateUrl: './calendar.component.html',
-    styleUrls: ['./calendar.component.css']
+    selector: 'app-events-admin',
+    templateUrl: './events-admin.component.html',
+    styleUrls: ['./events-admin.component.css']
 })
-export class CalendarComponent implements OnInit {
+export class EventsAdminComponent implements OnInit {
     today: string = new Date().toISOString().replace(/T.*$/, '')
     userLogin?: boolean
     listOfEvents: EventInput[] = []
     calendarOptions: CalendarOptions;
-    userData?: any
 
     constructor(
         private router: Router,
@@ -40,16 +39,9 @@ export class CalendarComponent implements OnInit {
     }
 
     ngOnInit(): void {
-
         this.authService.currentUserLoginOn.subscribe({
             next: (login) => {
                 this.userLogin = login
-            }
-        })
-        this.authService.currentUserData.subscribe({
-            next: (data) => {
-                this.userData = data
-                console.log(this.userData.rol)
             }
         })
 
@@ -62,7 +54,7 @@ export class CalendarComponent implements OnInit {
                 this.listOfEvents = events.map(event => {
                     return {
                         id: event.id.toString(),
-                        title: `Cupos: ${event.cuposDisponibles} de ${event.capacidad}`,
+                        title: `Capacidad: ${event.cuposDisponibles} de ${event.capacidad}`,
                         start: `${event.fecha}T${event.horaInicio}`,
                         end: `${event.fecha}T${event.horaFin}`,
                         url: this.eventService.generateEventUrl(event.id)
@@ -77,26 +69,11 @@ export class CalendarComponent implements OnInit {
         })
     }
 
-
-
     handleEventClick(info: any) {
-        if (this.userLogin) {
-            console.log(this.userData.rol)
-            if (this.userData.rol === 'ADMIN') {
-                this.router.navigateByUrl("admin/alumnos-list")
-                
-                return
-            }
-            else{
-                const eventDate = info.event.start.toISOString().split('T')[0];
-                const urlWithDate = `${info.event.url}&date=${eventDate}`;
-                this.router.navigateByUrl(urlWithDate);
-                info.jsEvent.preventDefault();
-            }
-        } else {
-            this.router.navigateByUrl("auth/login")
+        console.log(info.event.url)
+        if (info.event.url) {
+            this.router.navigateByUrl(info.event.url);
             info.jsEvent.preventDefault();
         }
     }
-
 }

@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable, catchError, throwError } from "rxjs";
 import { User } from "../interfaces/user";
 import { environment } from "src/environments/environment";
-import { Usuario } from "../interfaces/users-list";
+import { addUsuarioRequest, Usuario } from "../interfaces/users-list";
 
 @Injectable({
     providedIn: 'root'
@@ -45,5 +45,13 @@ export class UserService {
         return throwError(() => {
             new Error('Algo falló, porfavor intente nuevamente')
         })
+    }
+
+    addUser(data: addUsuarioRequest): Observable<Usuario> {
+        return this.http.post<Usuario>(environment.url + this.collection + "/addUser", data)
+    }
+
+    getRoles(){
+        return this.http.get(environment.url + this.collection + "/allRoles")
     }
 }

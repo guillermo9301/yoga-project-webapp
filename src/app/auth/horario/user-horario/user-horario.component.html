@@ -12,9 +12,10 @@
                             <p class="card-text" style="font-weight: 600;">Hora
                                 de
                                 fin: </p><p>{{clase.horaFin}}</p>
-                            <a [routerLink]="['editar-clase', clase.id]"
-                                class="card-link">Editar</a>
-                            <a href="#" class="card-link">Eliminar</a>
+                            <button class="btn btn-danger"
+                                (click)="eliminarReserva(clase.id)">
+                                Eliminar Reserva
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -1,7 +1,6 @@
-
 <div class="card card-info">
     <div class="card-header">
-        <h3 class="mb-3 text-center">Registro</h3>
+        <h3 class="mb-3 text-center">Registro nuevo Usuario</h3>
     </div>
     <!-- /.card-header -->
 
@@ -188,6 +187,27 @@
                         formControlName="celular">
                 </div>
             </div>
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="rol"
+                        class="col-sm-2 col-form-label label-rosado">Rol</label>
+                    <div class="col-sm-6">
+                        <select id="rol" 
+                            formControlName="rol"
+                            class="form-control">
+                            <option value selected>-- seleccione --</option>
+                            <option *ngFor="let rol of listaDeRoles" [value]="rol">{{rol}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="text-danger"
+                    *ngIf="rol.invalid && (rol.dirty || rol.touched)">
+                    <div
+                        *ngIf="rol.errors?.['required']">Debe ser indicado el rol</div>
+                </div>
+            </div>
+
         </div>
         <!-- /.card-body -->
 
@@ -195,7 +215,7 @@
 
     <div class="card-footer d-flex justify-content-center gap-3">
         <button type="submit" (click)="onSubmit()"
-            class="btn btn-primary py-3 px-4">Crear cuenta</button>
+            class="btn btn-primary py-3 px-4">Registrar</button>
 
         <button type="submit"
             class="btn btn-primary  py-3 px-4"
