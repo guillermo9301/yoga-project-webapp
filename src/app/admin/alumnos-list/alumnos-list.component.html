@@ -12,26 +12,23 @@
                 <th>Apellido Materno</th>
                 <th>Correo Electrónico</th>
                 <th>Asistencia</th>
-                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let alumno of alumnos" (click)="selectAlumno(alumno)">
+            <tr *ngFor="let alumno of alumnos">
                 <td>{{ alumno.nombre }}</td>
                 <td>{{ alumno.apellido_paterno }}</td>
                 <td>{{ alumno.apellido_materno }}</td>
                 <td>{{ alumno.correo }}</td>
                 <td>
-                    <input type="checkbox" />
-                </td>
-                <td>
-                    <button class="btn btn-info" type="button"
-                        (click)="selectAlumno(alumno)" data-toggle="collapse"
-                        data-target="#collapseDates">
-                        Seleccionar
-                    </button>
+                    <input type="checkbox"
+                        (change)="toggleAttendance(alumno.id, $event)" />
                 </td>
             </tr>
         </tbody>
     </table>
+    <div class="text-center mt-4">
+        <button class="btn btn-success" (click)="saveAttendance()">Guardar
+            Asistencia</button>
+    </div>
 </div>

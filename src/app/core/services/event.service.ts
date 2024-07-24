@@ -67,6 +67,10 @@ export class EventService {
     return this.http.post<Evento>(`${environment.url}${this.collection}/removeAlumno`, removeRequest);
   }
 
+  registrarAsistencia(eventId: number, alumnosAsistentesIds: number[]): Observable<void> {
+    return this.http.post<void>(environment.url + this.collection + "/" + eventId + "/asistencia", alumnosAsistentesIds)
+  }
+
   deleteEventById(eventId: number): Observable<void> {
     return this.http.delete<void>(`${environment.url}${this.collection}/delete/${eventId}`);
   }
