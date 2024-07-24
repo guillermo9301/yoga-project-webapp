@@ -26,6 +26,7 @@ const routes: Routes = [
   { path: 'reservationList', component: ReservationListComponent},
   { path: 'reservationEdit', component: ReservationEditComponent},
   { path: 'pago/:id', component: PaymentsComponent },
+
 ];
 
 @NgModule({

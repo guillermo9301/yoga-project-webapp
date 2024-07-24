@@ -1,99 +1,64 @@
-<section class="background-section"
-    style="background-image: url(assets/images/yoga.jpg);">
-    <div class="col-md-6 formulario">
+<section class="background-section" style="background-image: url(assets/images/yoga.jpg);">
+    <div class="formulario">
         <form [formGroup]="newEventForm" class="contact-form">
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="fecha" class="form-label">Fecha</label>
-                        <input type="date" class="form-control"
-                            formControlName="fecha">
-                        <div class="text-danger"
-                            *ngIf="newEventForm.get('fecha')!.invalid && (newEventForm.get('fecha')!.dirty || newEventForm.get('fecha')!.touched)">
-                            <div
-                                *ngIf="newEventForm.get('fecha')!.errors?.['required']">Debe
-                                seleccionar una fecha</div>
+                        <input type="date" class="form-control" formControlName="fecha">
+                        <div class="text-danger" *ngIf="newEventForm.get('fecha')!.invalid && (newEventForm.get('fecha')!.dirty || newEventForm.get('fecha')!.touched)">
+                            <div *ngIf="newEventForm.get('fecha')!.errors?.['required']">Debe seleccionar una fecha</div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="horaInicio" class="form-label">Hora de
-                            Inicio</label>
-                        <input type="time" class="form-control"
-                            formControlName="horaInicio">
-                        <div class="text-danger"
-                            *ngIf="newEventForm.get('horaInicio')!.invalid && (newEventForm.get('horaInicio')!.dirty || newEventForm.get('horaInicio')!.touched)">
-                            <div
-                                *ngIf="newEventForm.get('horaInicio')!.errors?.['required']">Debe
-                                indicar la hora de inicio</div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="horaFin" class="form-label">Hora de
-                            Fin</label>
-                        <input type="time" class="form-control"
-                            formControlName="horaFin">
-                        <div class="text-danger"
-                            *ngIf="newEventForm.get('horaFin')!.invalid && (newEventForm.get('horaFin')!.dirty || newEventForm.get('horaFin')!.touched)">
-                            <div
-                                *ngIf="newEventForm.get('horaFin')!.errors?.['required']">Debe
-                                indicar la hora de Fin</div>
+                        <label for="horaInicio" class="form-label">Hora de Inicio</label>
+                        <input type="time" class="form-control" formControlName="horaInicio">
+                        <div class="text-danger" *ngIf="newEventForm.get('horaInicio')!.invalid && (newEventForm.get('horaInicio')!.dirty || newEventForm.get('horaInicio')!.touched)">
+                            <div *ngIf="newEventForm.get('horaInicio')!.errors?.['required']">Debe indicar la hora de inicio</div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="capacidad"
-                            class="form-label">Capacidad</label>
-                        <input type="number" class="form-control"
-                            formControlName="capacidad">
-                        <div class="text-danger"
-                            *ngIf="newEventForm.get('capacidad')!.invalid && (newEventForm.get('capacidad')!.dirty || newEventForm.get('capacidad')!.touched)">
-                            <div
-                                *ngIf="newEventForm.get('capacidad')!.errors?.['required']">Debe
-                                indicar la capacidad del evento</div>
+                        <label for="horaFin" class="form-label">Hora de Fin</label>
+                        <input type="time" class="form-control" formControlName="horaFin">
+                        <div class="text-danger" *ngIf="newEventForm.get('horaFin')!.invalid && (newEventForm.get('horaFin')!.dirty || newEventForm.get('horaFin')!.touched)">
+                            <div *ngIf="newEventForm.get('horaFin')!.errors?.['required']">Debe indicar la hora de Fin</div>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="Recurrente" class="form-check-label">Evento
-                            recurrente?</label>
+                        <label for="capacidad" class="form-label">Capacidad</label>
+                        <input type="number" class="form-control" formControlName="capacidad">
+                        <div class="text-danger" *ngIf="newEventForm.get('capacidad')!.invalid && (newEventForm.get('capacidad')!.dirty || newEventForm.get('capacidad')!.touched)">
+                            <div *ngIf="newEventForm.get('capacidad')!.errors?.['required']">Debe indicar la capacidad del evento</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Recurrente" class="form-check-label">Evento recurrente?</label>
                         <div class="radio-group">
                             <div class="form-check">
-                                <input type="radio" id="recurrenteYes"
-                                    class="form-check-input"
-                                    formControlName="recurrente" [value]="true">
-                                <label class="form-check-label"
-                                    for="recurrenteYes">Sí</label>
+                                <input type="radio" id="recurrenteYes" class="form-check-input" formControlName="recurrente" [value]="true">
+                                <label class="form-check-label" for="recurrenteYes">Sí</label>
                             </div>
                             <div class="form-check">
-                                <input type="radio" id="recurrenteNo"
-                                    class="form-check-input"
-                                    formControlName="recurrente"
-                                    [value]="false">
-                                <label for="recurrenteNo"
-                                    class="form-check-label">No</label>
+                                <input type="radio" id="recurrenteNo" class="form-check-input" formControlName="recurrente" [value]="false">
+                                <label class="form-check-label" for="recurrenteNo">No</label>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="fechaFinRecurrencia"
-                            class="form-label">Fecha fin de recurrencia</label>
-                        <input type="date" class="form-control"
-                            formControlName="fechaFinRecurrencia">
-                        <div class="text-danger"
-                            *ngIf="newEventForm.get('fechaFinRecurrencia')!.invalid && (newEventForm.get('fechaFinRecurrencia')!.dirty || newEventForm.get('fechaFinRecurrencia')!.touched)">
-                            <div
-                                *ngIf="newEventForm.get('fechaFinRecurrencia')!.errors?.['required']">Debe
-                                seleccionar una fecha</div>
+                        <label for="fechaFinRecurrencia" class="form-label">Fecha fin de recurrencia</label>
+                        <input type="date" class="form-control" formControlName="fechaFinRecurrencia">
+                        <div class="text-danger" *ngIf="newEventForm.get('fechaFinRecurrencia')!.invalid && (newEventForm.get('fechaFinRecurrencia')!.dirty || newEventForm.get('fechaFinRecurrencia')!.touched)">
+                            <div *ngIf="newEventForm.get('fechaFinRecurrencia')!.errors?.['required']">Debe seleccionar una fecha</div>
                         </div>
                     </div>
                 </div>
@@ -101,16 +66,12 @@
         </form>
         <div style="display: flex; justify-content: space-evenly;">
             <div class="mb-3 text-center">
-                <input type="submit" value="Crear"
-                    class="btn btn-primary py-3 px-5"
-                    (click)="onSubmit()">
+                <input type="submit" value="Crear" class="btn btn-primary py-3 px-5" (click)="onSubmit()">
             </div>
             <div class="mb-3 text-center">
-                <input type="submit" value="Cancelar"
-                    class="btn btn-primary py-3 px-5"
-                    (click)="cancel()">
+                <input type="submit" value="Cancelar" class="btn btn-primary py-3 px-5" (click)="cancel()">
             </div>
         </div>
     </div>
-
 </section>
+
