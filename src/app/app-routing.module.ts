@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'clases', component: ClasesComponent },
-  { path: 'calendario', component: CalendarComponent },
+  { path: 'calendario', component: CalendarComponent, canActivate: [AuthGuard] },
   { path: 'reserva', component: ReservationComponent },
   { path: 'recovery', component: PasswordRecoveryComponent },
   { path: 'reservationList', component: ReservationListComponent },
