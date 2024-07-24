@@ -167,7 +167,8 @@
                         <input type="date" class="form-control"
                             id="inputFechaNacimiento3"
                             placeholder="Fecha de Nacimiento"
-                            formControlName="fec_nacimiento">
+                            formControlName="fec_nacimiento"
+                            [attr.max]="minDate">
                     </div>
                 </div>
                 <div class="text-danger"
@@ -193,18 +194,20 @@
                     <label for="rol"
                         class="col-sm-2 col-form-label label-rosado">Rol</label>
                     <div class="col-sm-6">
-                        <select id="rol" 
+                        <select id="rol"
                             formControlName="rol"
                             class="form-control">
                             <option value selected>-- seleccione --</option>
-                            <option *ngFor="let rol of listaDeRoles" [value]="rol">{{rol}}</option>
+                            <option *ngFor="let rol of listaDeRoles"
+                                [value]="rol">{{rol}}</option>
                         </select>
                     </div>
                 </div>
                 <div class="text-danger"
                     *ngIf="rol.invalid && (rol.dirty || rol.touched)">
                     <div
-                        *ngIf="rol.errors?.['required']">Debe ser indicado el rol</div>
+                        *ngIf="rol.errors?.['required']">Debe ser indicado el
+                        rol</div>
                 </div>
             </div>
 

@@ -6,6 +6,8 @@ import { addUsuarioRequest } from 'src/app/core/interfaces/users-list';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { UserService } from 'src/app/core/services/user.service';
 import Swal from 'sweetalert2';
+import { minAgeValidator } from 'src/app/core/validators/minAgeValidator';
+import * as moment from 'moment';
 
 @Component({
     selector: 'app-nuevo-usuario',
@@ -14,7 +16,8 @@ import Swal from 'sweetalert2';
 })
 export class NuevoUsuarioComponent implements OnInit {
 
-  listaDeRoles: string[]=[];
+    listaDeRoles: string[] = [];
+    minDate: string;
 
     usuario = {
         correo: '',
@@ -43,15 +46,18 @@ export class NuevoUsuarioComponent implements OnInit {
     })
 
     constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder,
-                private userService: UserService) { }
-    
+        private userService: UserService) {
+        const today = moment();
+        this.minDate = today.subtract(12, 'years').format('YYYY-MM-DD');
+    }
+
 
     ngOnInit(): void {
         this.userService.getRoles().subscribe({
-          next: (data:any) =>{
-            this.listaDeRoles = data
-            console.log(this.listaDeRoles)
-          }
+            next: (data: any) => {
+                this.listaDeRoles = data
+                console.log(this.listaDeRoles)
+            }
         })
     }
 
@@ -92,7 +98,7 @@ export class NuevoUsuarioComponent implements OnInit {
     }
 
     get rol() {
-      return this.registerForm.controls.rol
+        return this.registerForm.controls.rol
     }
 
 

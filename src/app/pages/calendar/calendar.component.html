@@ -1,11 +1,8 @@
 <div class="container">
     <div class="container d-flex justify-content-between align-items-center">
-        <a *ngIf="userLogin" routerLink="/reservationList" class="btn btn-primary">Mis Reservas</a>
+        <a *ngIf="userLogin" routerLink="/reservationList"
+            class="btn btn-primary">Mis Reservas</a>
         <div></div>
-        <div class="d-flex align-items-center">
-            <div class="circle-M">Instructor: xxxxxx</div>
-            <div class="circle-F">Instructor: xxxxxx</div>
-        </div>
         <div></div>
     </div>
     <full-calendar [options]="calendarOptions"></full-calendar>

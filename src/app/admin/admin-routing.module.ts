@@ -17,14 +17,14 @@ const routes: Routes = [
     { path: 'home-admin', component: HomeAdminComponent },
     { path: 'users', component: UsersComponent },
     { path: 'user/user-details/:id', component: UserDetailsComponent },
-    { path: 'alumnos-list', component: AlumnosListComponent},
+    { path: 'alumnos-list', component: AlumnosListComponent },
     { path: 'events', component: EventsAdminComponent },
     { path: 'events/nuevo-evento', component: NuevoEventoComponent },
     { path: 'events/edit-evento', component: EditEventoComponent },
     { path: 'paquetes', component: PaqueteAdminComponent },
     { path: 'paquetes/edit-paquete', component: EditPaqueteComponent },
     { path: 'paquetes/nuevo-paquete', component: NuevoPaqueteComponent },
-    { path: 'users/nuevo-usuario', component: NuevoUsuarioComponent}
+    { path: 'users/nuevo-usuario', component: NuevoUsuarioComponent }
 ];
 
 @NgModule({

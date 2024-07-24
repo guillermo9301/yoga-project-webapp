@@ -30,7 +30,7 @@ export class EventService {
         url = `admin/events/edit-evento?id=${id}`
         break;
       case 'INSTRUCTOR':
-        url = ``
+        url = `admin/alumnos-list?id=${id}`
         break;
       case 'ALUMNO':
         url = `auth/horario/reserva-horario?eventId=${id}`

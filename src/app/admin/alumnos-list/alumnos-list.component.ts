@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Evento } from 'src/app/core/interfaces/eventDTO';
+import { User } from 'src/app/core/interfaces/user';
+import { Usuario } from 'src/app/core/interfaces/users-list';
+import { EventService } from 'src/app/core/services/event.service';
 
 @Component({
   selector: 'app-alumnos-list',
@@ -6,21 +11,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./alumnos-list.component.css']
 })
 export class AlumnosListComponent {
-  alumnos = [
-    { nombre: 'Juan', apellidoPaterno: 'Pérez', apellidoMaterno: 'García', correo: 'juan.perez@gmail.com', fechas: ['2023-01-15', '2023-05-22', '2023-09-10'], asistencia: false },
-    { nombre: 'María', apellidoPaterno: 'López', apellidoMaterno: 'Martínez', correo: 'maria.lopez@gmail.com', fechas: ['2023-02-10', '2023-06-18', '2023-10-05'], asistencia: false },
-    { nombre: 'Carlos', apellidoPaterno: 'Hernández', apellidoMaterno: 'Rodríguez', correo: 'carlos.hernandez@gmail.com', fechas: ['2023-03-12', '2023-07-25', '2023-11-30'], asistencia: false },
-    // Añadir más alumnos según sea necesario
-  ];
+  evento!: Evento
+  alumnos: Usuario[] = []
 
   selectedAlumno: any = null;
+  eventId!: number;
 
-  constructor() { }
+  constructor(private eventService: EventService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.eventId = +params['id']
+      this.getEvento(this.eventId)
+
+    })
+
   }
 
   selectAlumno(alumno: any): void {
     this.selectedAlumno = alumno;
+  }
+
+  getEvento(eventId: number) {
+    this.eventService.getEventById(eventId).subscribe({
+      next: (data: Evento) => {
+        this.evento = data
+        console.log("evento: ", this.evento)
+        this.alumnos = this.evento.alumnos
+      }
+    })
   }
 }

@@ -80,21 +80,9 @@ export class CalendarComponent implements OnInit {
 
 
     handleEventClick(info: any) {
-        if (this.userLogin) {
-            console.log(this.userData.rol)
-            if (this.userData.rol === 'ADMIN') {
-                this.router.navigateByUrl("admin/alumnos-list")
-                
-                return
-            }
-            else{
-                const eventDate = info.event.start.toISOString().split('T')[0];
-                const urlWithDate = `${info.event.url}&date=${eventDate}`;
-                this.router.navigateByUrl(urlWithDate);
-                info.jsEvent.preventDefault();
-            }
-        } else {
-            this.router.navigateByUrl("auth/login")
+        console.log(info.event.url)
+        if (info.event.url) {
+            this.router.navigateByUrl(info.event.url);
             info.jsEvent.preventDefault();
         }
     }

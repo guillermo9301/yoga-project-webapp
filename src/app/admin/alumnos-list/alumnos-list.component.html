@@ -1,16 +1,8 @@
 <div class="container table-container">
     <h2 class="text-center">Listado de Alumnos</h2>
     <div class="text-center mb-4">
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseDates" aria-expanded="false" aria-controls="collapseDates">
-            Ver Fechas
-        </button>
     </div>
     <div id="collapseDates" class="collapse">
-        <div class="card card-body">
-            <ul>
-                <li *ngFor="let fecha of selectedAlumno?.fechas">{{ fecha }}</li>
-            </ul>
-        </div>
     </div>
     <table class="table table-striped">
         <thead>
@@ -26,14 +18,16 @@
         <tbody>
             <tr *ngFor="let alumno of alumnos" (click)="selectAlumno(alumno)">
                 <td>{{ alumno.nombre }}</td>
-                <td>{{ alumno.apellidoPaterno }}</td>
-                <td>{{ alumno.apellidoMaterno }}</td>
+                <td>{{ alumno.apellido_paterno }}</td>
+                <td>{{ alumno.apellido_materno }}</td>
                 <td>{{ alumno.correo }}</td>
                 <td>
-                    <input type="checkbox" [(ngModel)]="alumno.asistencia" />
+                    <input type="checkbox" />
                 </td>
                 <td>
-                    <button class="btn btn-info" type="button" (click)="selectAlumno(alumno)" data-toggle="collapse" data-target="#collapseDates">
+                    <button class="btn btn-info" type="button"
+                        (click)="selectAlumno(alumno)" data-toggle="collapse"
+                        data-target="#collapseDates">
                         Seleccionar
                     </button>
                 </td>
@@ -41,4 +35,3 @@
         </tbody>
     </table>
 </div>
-
