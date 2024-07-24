@@ -8,7 +8,6 @@
     justify-content: center;
     align-items: center;
     margin: auto;
-
 }
 
 .background-section {
@@ -20,7 +19,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    padding: 20px; /* Añadimos padding para los laterales en todas las pantallas */
 }
 
 .radio-group {
@@ -42,3 +41,40 @@
 .form-check-label {
     margin: 0;
 }
+
+@media (max-width: 768px) {
+    .formulario {
+        max-width: 90%;
+        padding: 20px;
+    }
+
+    .background-section {
+        height: auto;
+        padding: 40px 20px; /* Más espacio arriba y abajo */
+    }
+
+    .radio-group {
+        flex-direction: column;
+    }
+
+    .form-check {
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .formulario {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .background-section {
+        padding: 60px 20px; /* Más espacio arriba y abajo */
+    }
+
+    .row > div {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+

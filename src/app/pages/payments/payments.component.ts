@@ -65,6 +65,31 @@ export class PaymentsComponent implements OnInit {
     })
   }
 
+  get email() {
+    return this.paymentForm.get('email');
+  }
+  
+  get phone() {
+    return this.paymentForm.get('phone');
+  }
+  
+  get cardNumber() {
+    return this.paymentForm.get('cardNumber');
+  }
+  
+  get expiryDate() {
+    return this.paymentForm.get('expiryDate');
+  }
+  
+  get cvc() {
+    return this.paymentForm.get('cvc');
+  }
+  
+  get cardHolderName() {
+    return this.paymentForm.get('cardHolderName');
+  }
+  
+
   formatCardNumber(event: any): void {
     let input = event.target.value.replace(/\D/g, '').substring(0, 16);
     input = input.replace(/(\d{4})(?=\d)/g, '$1 ');
