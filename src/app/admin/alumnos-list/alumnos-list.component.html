@@ -1,0 +1,34 @@
+<div class="container table-container">
+    <h2 class="text-center">Listado de Alumnos</h2>
+    <div class="text-center mb-4">
+    </div>
+    <div id="collapseDates" class="collapse">
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Correo Electrónico</th>
+                <th>Asistencia</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let alumno of alumnos">
+                <td>{{ alumno.nombre }}</td>
+                <td>{{ alumno.apellido_paterno }}</td>
+                <td>{{ alumno.apellido_materno }}</td>
+                <td>{{ alumno.correo }}</td>
+                <td>
+                    <input type="checkbox"
+                        (change)="toggleAttendance(alumno.id, $event)" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="text-center mt-4">
+        <button class="btn btn-success" (click)="saveAttendance()">Guardar
+            Asistencia</button>
+    </div>
+</div>

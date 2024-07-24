@@ -1,44 +1,119 @@
-<section class="subscription-form">
-  <div class="container">
-    <div class="subscription-details">
-      <a class="navbar-brand"><span></span>One Love Yoga</a>
-      <h2>Suscribete a One love yoga</h2>
-      <p class="price">PEN {{ paquete?.precio }}.00  <span></span></p>
+<section class="ftco-section contact-section">
+  <div class="container d-flex justify-content-center align-items-center">
+    <div class="row block-9">
+      <div class="col-md-4 contact-info bg-light p-4">
+        <div class="row">
+          <div class="col-md-12 mb-4">
+            <h1 class="h4">One Love Yoga</h1>
+            <h3 class="h4">Suscribete a One love yoga</h3>
+          </div>
+          <div class="col-md-12 mb-3">
+            <p>PEN {{ paquete.precio }}.00 <span></span></p>
+          </div>
+          <div class="col-md-12 mb-3">
+            <p><span>Subtotal:</span> <a> PEN {{ paquete.precio }}.00</a></p>
+          </div>
+          <div class="col-md-12 mb-3">
+            <p><span>IGV:</span> <a> PEN 0.00</a></p>
+          </div>
+          <div class="col-md-12 mb-3">
+            <p><span>Total:</span> <a> PEN {{ paquete.precio }}.00</a></p>
+          </div>
+        </div>
+      </div>
 
-      <div class="total">
-        <p>Subtotal: PEN {{ paquete?.precio }}.00 </p>
-        <p>IGV: PEN 0.00</p>
-        <p><strong>Total: PEN {{ paquete?.precio }}.00</strong></p>
+      <div class="col-md-6">
+        <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()"
+          class="contact-form">
+          <h2>Paga con tarjeta</h2>
+          <div class="form-group">
+            <label for="email">Correo</label>
+            <input type="email" id="email" formControlName="email"
+              placeholder="email@example.com" class="form-control">
+            <div class="text-danger"
+              *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+              <div *ngIf="email?.errors?.['required']">Debe ingresar su
+                correo</div>
+              <div *ngIf="email?.errors?.['email']">Debe ingresar un correo
+                válido</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Celular</label>
+            <input type="tel" id="phone" formControlName="phone"
+              placeholder="912 345 678" class="form-control">
+            <div class="text-danger"
+              *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)">
+              <div *ngIf="phone?.errors?.['required']">Debe ingresar su número
+                de celular</div>
+              <div *ngIf="phone?.errors?.['pattern']">Debe ingresar un número de
+                celular válido</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="card-number">Información de la Tarjeta</label>
+            <input type="text" id="card-number" formControlName="cardNumber"
+              placeholder="1234 1234 1234 1234"
+              (input)="formatCardNumber($event)" class="form-control">
+            <div class="text-danger"
+              *ngIf="cardNumber?.invalid && (cardNumber?.dirty || cardNumber?.touched)">
+              <div *ngIf="cardNumber?.errors?.['required']">Debe ingresar el
+                número de la tarjeta</div>
+              <div *ngIf="cardNumber?.errors?.['pattern']">Debe ingresar un
+                número de tarjeta válido</div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="col">
+              <input type="text" id="card-expiry" formControlName="expiryDate"
+                placeholder="MM / YY" class="form-control">
+              <div class="text-danger"
+                *ngIf="expiryDate?.invalid && (expiryDate?.dirty || expiryDate?.touched)">
+                <div *ngIf="expiryDate?.errors?.['required']">Debe ingresar la
+                  fecha de expiración</div>
+                <div *ngIf="expiryDate?.errors?.['pattern']">Debe ingresar una
+                  fecha de expiración válida</div>
+              </div>
+            </div>
+            <div class="col">
+              <input type="text" id="card-cvc" formControlName="cvc"
+                placeholder="CVC" class="form-control">
+              <div class="text-danger"
+                *ngIf="cvc?.invalid && (cvc?.dirty || cvc?.touched)">
+                <div *ngIf="cvc?.errors?.['required']">Debe ingresar el
+                  CVC</div>
+                <div *ngIf="cvc?.errors?.['pattern']">Debe ingresar un CVC
+                  válido</div>
+              </div>
+            </div>
+          </div>
+          <br>
+
+          <div class="form-group">
+            <label for="cardholder-name">Nombre del titular de la
+              Tarjeta</label>
+            <input type="text" id="cardholder-name"
+              formControlName="cardHolderName" placeholder="Nombre"
+              class="form-control">
+            <div class="text-danger"
+              *ngIf="cardHolderName?.invalid && (cardHolderName?.dirty || cardHolderName?.touched)">
+              <div *ngIf="cardHolderName?.errors?.['required']">Debe ingresar el
+                nombre del titular de la tarjeta</div>
+            </div>
+          </div>
+
+          <input type="hidden" formControlName="paqueteId">
+          <!-- Campo oculto para el ID del paquete -->
+          <div class="form-group">
+            <input type="submit" value="Suscríbete"
+              class="btn btn-primary py-3 px-5">
+          </div>
+
+        </form>
       </div>
     </div>
-
-    <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()" class="payment-form">
-      <h3>Paga con tarjeta</h3>
-      <div class="form-group">
-        <label for="email">Correo</label>
-        <input type="email" id="email" formControlName="email" placeholder="email@example.com">
-      </div>
-      <div class="form-group">
-        <label for="phone">Celular</label>
-        <input type="tel" id="phone" formControlName="phone" placeholder="912 345 678">
-      </div>
-      <div class="form-group">
-        <label for="card-number">Información de la Tarjeta</label>
-        <input type="text" id="card-number" formControlName="cardNumber" placeholder="1234 1234 1234 1234" (input)="formatCardNumber($event)">
-      </div>
-      <div class="form-group">
-        <input type="text" id="card-expiry" formControlName="expiryDate" placeholder="MM / YY">
-      </div>
-      <div class="form-group">
-        <input type="text" id="card-cvc" formControlName="cvc" placeholder="CVC">
-      </div>
-      <div class="form-group">
-        <label for="cardholder-name">Nombre del titular de la Tarjeta</label>
-        <input type="text" id="cardholder-name" formControlName="cardHolderName" placeholder="Nombre">
-      </div>
-      <input type="hidden" formControlName="paqueteId"> <!-- Campo oculto para el ID del paquete -->
-      <button type="submit">Suscríbete</button>
-    </form>
   </div>
 </section>
-

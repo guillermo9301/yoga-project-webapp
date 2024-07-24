@@ -33,6 +33,7 @@
     "@fullcalendar/timegrid": "^6.1.14",
     "@sweetalert2/ngx-sweetalert2": "^12.3.0",
     "admin-lte": "3.2",
+    "date-fns": "^3.6.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"

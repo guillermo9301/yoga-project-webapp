@@ -1,15 +1,26 @@
 import { Usuario } from "./users-list"
 
 
-export interface NuevoEventoDTO {
-    fecha: string,
+export interface CrearEventoRequest {
+    mensaje: string,
+    fechaInicio: string,
     horaInicio: string,
     horaFin: string,
     capacidad: number,
     cuposDisponibles: number,
     recurrente: boolean
 }
+
+export interface CrearEventoResponse {
+    mensaje: string,
+    fechaInicio: string,
+    fechaFinRecurrencia: string,
+    horaInicio: string,
+    horaFin: string,
+    recurrente: boolean
+}
 export interface EventoDTO {
+    mensaje: string,
     fecha: string,
     horaInicio: string,
     horaFin: string,

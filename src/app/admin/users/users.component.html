@@ -1,8 +1,7 @@
-
 <div class="hero-wrap">
     <div class="card-header">
         <h3 class="card-title">Gestion de Usuarios</h3>
-        <div class="card-tools">
+        <div class="card-tools d-flex flex-column">
             <div class="input-group input-group-sm" style="width: 150px;">
                 <input type="text" name="table_search"
                     class="form-control float-right" placeholder="Search">
@@ -11,6 +10,11 @@
                         <fa-icon [icon]="faSearch"></fa-icon>
                     </button>
                 </div>
+            </div>
+            <div class="mt-3">
+                <button routerLink="./nuevo-usuario"
+                    class="btn btn-primary py-3 px-4">Crear nuevo
+                    Usuario</button>
             </div>
         </div>
     </div>

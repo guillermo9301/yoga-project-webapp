@@ -1,0 +1,13 @@
+.table-container {
+    margin: 50px auto;
+    max-width: 900px;
+}
+.table thead th {
+    background-color: #f8f9fa;
+}
+.back-arrow {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+}

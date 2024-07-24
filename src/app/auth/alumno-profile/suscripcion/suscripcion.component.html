@@ -1,0 +1,49 @@
+<div>
+    <div *ngIf="hasSuscription">
+        <div>
+            <img
+                class="profile-user-img img-fluid img-circle"
+                [src]="suscriptionStatusIcon"
+                alt="user image">
+            <span class="username">
+                <a href="#">Susripcion: {{suscriptionStatus}}</a>
+            </span>
+            <span
+                class="description"> Fecha de Inicio: {{suscriptionFechaInicio}}
+            </span>
+            <span
+                class="description"> Fecha de expiración:
+                {{suscriptionFechaFin}}
+            </span>
+        </div>
+
+        <div class="col-md-3">
+            <div class="block-7">
+                <div class="text-center">
+                    <h2 class="heading"></h2>
+                    <span class="price"><sup>S/</sup> <span
+                            class="number">{{ userPaquete?.precio
+                            }}</span></span>
+
+                    <h3 class="heading-2 my-4">{{ userPaquete?.nombre }}</h3>
+
+                    <ul class="pricing-text mb-5">
+                        <li>Onetime Access To All Club</li>
+                        <li>Group Trainer</li>
+                        <li>Book A Group Class</li>
+                        <li>Fitness Orientation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!hasSuscription">
+        <h1>Usted no cuenta con una suscripción! :(</h1>
+        <a class="btn btn-primary" [routerLink]="['/clases']"
+            fragment="catalogo">
+            Obtén tu suscripcion aqui!
+        </a>
+
+    </div>
+
+</div>

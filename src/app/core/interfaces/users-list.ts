@@ -22,3 +22,16 @@ export interface Usuario {
     accountNonExpired: boolean;
     credentialsNonExpired: boolean;
 }
+
+export interface addUsuarioRequest {
+    correo: string;
+    password: string;
+    nombre: string;
+    apellido_paterno: string;
+    apellido_materno: string;
+    fec_nacimiento: string;
+    id_tipo_documento: string;
+    nro_documento: string;
+    celular: string;
+    rol: string;
+}

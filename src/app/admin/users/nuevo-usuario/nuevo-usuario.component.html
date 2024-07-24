@@ -1,0 +1,229 @@
+<div class="card card-info">
+    <div class="card-header">
+        <h3 class="mb-3 text-center">Registro nuevo Usuario</h3>
+    </div>
+    <!-- /.card-header -->
+
+    <!-- form start -->
+    <form [formGroup]="registerForm"
+        class="contact-form  d-flex flex-column align-items-center">
+        <div class="card-body  w-100 ">
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="inputNombre"
+                        class="col-sm-2 col-form-label label-rosado">Nombre</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control"
+                            id="inputnombre3"
+                            placeholder="Nombre"
+                            formControlName="nombre">
+                    </div>
+                </div>
+                <div class="text-danger"
+                    *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                    <div
+                        *ngIf="nombre.errors?.['required']">Debe
+                        ingresar su nombre</div>
+                </div>
+
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="apellidoPaterno"
+                        class="col-sm-2 col-form-label label-rosado">Apellido
+                        Paterno</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control"
+                            id="inputApellidoPaterno3"
+                            placeholder="Apellido Paterno"
+                            formControlName="apellido_paterno">
+                    </div>
+                </div>
+                <div class="text-danger"
+                    *ngIf="apellido_paterno.invalid && (apellido_paterno.dirty || apellido_paterno.touched)">
+                    <div
+                        *ngIf="apellido_paterno.errors?.['required']">Debe
+                        ingresar su apellido paterno</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="apellidoMaterno"
+                        class="col-sm-2 col-form-label label-rosado">Apellido
+                        Materno</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control"
+                            id="inputApellidoMaterno3"
+                            placeholder="Apellido Materno"
+                            formControlName="apellido_materno">
+                    </div>
+                </div>
+                <div class="text-danger"
+                    *ngIf="apellido_materno.invalid && (apellido_materno.dirty || apellido_materno.touched)">
+                    <div
+                        *ngIf="apellido_materno.errors?.['required']">Debe
+                        ingresar su apellido materno</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="correo"
+                        class="col-sm-2 col-form-label label-rosado">Correo</label>
+                    <div class="col-sm-6">
+                        <input type="email" class="form-control"
+                            id="inputCorreo3"
+                            placeholder="Correo"
+                            formControlName="correo">
+                    </div>
+                </div>
+                <div class="text-danger"
+                    *ngIf="correo.invalid && (correo.dirty || correo.touched)">
+                    <div
+                        *ngIf="correo.errors?.['required']">Debe
+                        ingresar su correo</div>
+                    <div
+                        *ngIf="correo.errors?.['email']">
+                        Debe tener un formato de correo
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="inputPassword3"
+                        class="col-sm-2 col-form-label label-rosado">Password</label>
+                    <div class="col-sm-6">
+                        <input type="password" class="form-control"
+                            id="inputPassword3" placeholder="Password"
+                            formControlName="password">
+                    </div>
+                </div>
+                <div class="text-danger"
+                    *ngIf="password.invalid && (password.dirty || password.touched)">
+                    <div
+                        *ngIf="password.errors?.['required']">Debe
+                        ingresar una contraseña</div>
+                    <div
+                        *ngIf="password.errors?.['minlength']">
+                        Debe tener más de 8 caracteres
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="id_tipo_documento"
+                        class="col-sm-2 col-form-label label-rosado">Tipo de
+                        Documento</label>
+                    <div class="col-sm-6">
+                        <select id="id_tipo_documento"
+                            formControlName="id_tipo_documento"
+                            class="form-control">
+                            <option value selected>-- seleccione --</option>
+                            <option value="1">DNI</option>
+                            <option value="2">Pasaporte</option>
+                            <option value="3">C.E.</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="text-danger"
+                    *ngIf="tipo_documento.invalid && (tipo_documento.dirty || tipo_documento.touched)">
+                    <div
+                        *ngIf="tipo_documento.errors?.['required']">Debe
+                        indicar su tipo de documento</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="nroDocumento"
+                        class="col-sm-2 col-form-label label-rosado">Nro. de
+                        Documento</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control"
+                            placeholder="Nro Documento"
+                            id="inputNroDocumento"
+                            formControlName="nro_documento">
+                    </div>
+                </div>
+                <div class="text-danger"
+                    *ngIf="nro_documento.invalid && (nro_documento.dirty || nro_documento.touched)">
+                    <div
+                        *ngIf="nro_documento.errors?.['required']">Debe
+                        ingresar su numero de documento</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="fechaNacimiento"
+                        class="col-sm-2 col-form-label label-rosado">Fecha de
+                        Nacimiento</label>
+                    <div class="col-sm-6">
+                        <input type="date" class="form-control"
+                            id="inputFechaNacimiento3"
+                            placeholder="Fecha de Nacimiento"
+                            formControlName="fec_nacimiento"
+                            [attr.max]="minDate">
+                    </div>
+                </div>
+                <div class="text-danger"
+                    *ngIf="fec_nacimiento.invalid && (fec_nacimiento.dirty || fec_nacimiento.touched)">
+                    <div
+                        *ngIf="fec_nacimiento.errors?.['required']">Debe
+                        ingresar su numero de documento</div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="celular"
+                    class="col-sm-2 col-form-label label-rosado">Celular</label>
+                <div class="col-sm-6">
+                    <input type="tel" class="form-control"
+                        id="inputCelular3" placeholder="Celular"
+                        formControlName="celular">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-group row">
+                    <label for="rol"
+                        class="col-sm-2 col-form-label label-rosado">Rol</label>
+                    <div class="col-sm-6">
+                        <select id="rol"
+                            formControlName="rol"
+                            class="form-control">
+                            <option value selected>-- seleccione --</option>
+                            <option *ngFor="let rol of listaDeRoles"
+                                [value]="rol">{{rol}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="text-danger"
+                    *ngIf="rol.invalid && (rol.dirty || rol.touched)">
+                    <div
+                        *ngIf="rol.errors?.['required']">Debe ser indicado el
+                        rol</div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.card-body -->
+
+    </form>
+
+    <div class="card-footer d-flex justify-content-center gap-3">
+        <button type="submit" (click)="onSubmit()"
+            class="btn btn-primary py-3 px-4">Registrar</button>
+
+        <button type="submit"
+            class="btn btn-primary  py-3 px-4"
+            (click)="cancel()">Cancelar</button>
+
+    </div>
+    <!-- /.card-footer -->
+</div>

@@ -5,12 +5,11 @@ import Swal from 'sweetalert2';
 import { PaqueteService } from 'src/app/core/services/paquete.service';
 import { Paquete } from 'src/app/core/interfaces/paquete';
 import { PaymentService } from 'src/app/core/services/payment.service';
-import { Payment } from 'src/app/core/interfaces/payment';
+import { PaymentRequest } from 'src/app/core/interfaces/payment';
 import { SuscriptionService } from 'src/app/core/services/suscription.service';
 import { Suscription, SuscriptionDTO } from 'src/app/core/interfaces/SuscriptionDTO';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { User } from 'src/app/core/interfaces/user';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-payments',
@@ -19,7 +18,7 @@ import { Subscription } from 'rxjs';
 })
 export class PaymentsComponent implements OnInit {
   paymentForm: FormGroup;
-  paquete: Paquete | undefined;
+  paquete!: Paquete;
   userData!: User
 
   constructor(
@@ -66,6 +65,31 @@ export class PaymentsComponent implements OnInit {
     })
   }
 
+  get email() {
+    return this.paymentForm.get('email');
+  }
+  
+  get phone() {
+    return this.paymentForm.get('phone');
+  }
+  
+  get cardNumber() {
+    return this.paymentForm.get('cardNumber');
+  }
+  
+  get expiryDate() {
+    return this.paymentForm.get('expiryDate');
+  }
+  
+  get cvc() {
+    return this.paymentForm.get('cvc');
+  }
+  
+  get cardHolderName() {
+    return this.paymentForm.get('cardHolderName');
+  }
+  
+
   formatCardNumber(event: any): void {
     let input = event.target.value.replace(/\D/g, '').substring(0, 16);
     input = input.replace(/(\d{4})(?=\d)/g, '$1 ');
@@ -82,34 +106,16 @@ export class PaymentsComponent implements OnInit {
       return;
     }
 
-    const paymentData: Payment = {
-      id: 0,
-      celular: this.paymentForm.value.phone,
+    const paymentData: PaymentRequest = {
       correo: this.paymentForm.value.email,
+      celular: this.paymentForm.value.phone,
       cvc: this.paymentForm.value.cvc,
       expiracion: this.paymentForm.value.expiryDate,
       numTarjeta: this.paymentForm.value.cardNumber,
       titular: this.paymentForm.value.cardHolderName,
-      paquete: {
-        id: this.paquete?.id ?? 0,
-        nombre: this.paquete?.nombre ?? '',
-        precio: this.paquete?.precio ?? 0,
-        cantidadClases: this.paquete?.cantidadClases ?? 0,
-        cantidadDias: this.paquete?.cantidadDias ?? 0
-      }
+      paqueteId: this.paquete?.id,
+      alumnoId: this.userData.id
     };
-
-    const suscriptionPayload: Suscription = {
-      alumno: this.userData,
-      paquete: this.paquete!
-    }
-
-    this.suscriptionService.createSuscription(suscriptionPayload).subscribe({
-      next: (response: SuscriptionDTO) => {
-        console.log("Suscripcion creada: ", response)
-      }
-    })
-
 
     this.paymentService.createPayment(paymentData).subscribe({
       next: (response) => {

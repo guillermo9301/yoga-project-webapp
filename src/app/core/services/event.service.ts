@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { AddAlumnoRequest, Evento, EventoDTO, NuevoEventoDTO, RemoveAlumnoRequest } from '../interfaces/eventDTO';
+import { AddAlumnoRequest, Evento, EventoDTO, CrearEventoRequest, RemoveAlumnoRequest, CrearEventoResponse } from '../interfaces/eventDTO';
 import { AuthService } from './auth.service';
 import { User } from '../interfaces/user';
 import { Usuario } from '../interfaces/users-list';
@@ -30,7 +30,7 @@ export class EventService {
         url = `admin/events/edit-evento?id=${id}`
         break;
       case 'INSTRUCTOR':
-        url = ``
+        url = `admin/alumnos-list?id=${id}`
         break;
       case 'ALUMNO':
         url = `auth/horario/reserva-horario?eventId=${id}`
@@ -39,8 +39,8 @@ export class EventService {
     return url
   }
 
-  createEvent(eventData: NuevoEventoDTO): Observable<EventoDTO> {
-    return this.http.post<EventoDTO>(environment.url + this.collection + '/create', eventData)
+  createEvent(eventData: CrearEventoRequest): Observable<CrearEventoResponse> {
+    return this.http.post<CrearEventoResponse>(environment.url + this.collection + '/create', eventData)
   }
 
   getEventById(eventId: number): Observable<Evento> {
@@ -51,8 +51,8 @@ export class EventService {
     return this.http.get<Evento[]>(environment.url + this.collection)
   }
 
-  updateEvent(eventId: number, eventData: EventoDTO): Observable<Evento> {
-    return this.http.put<Evento>(environment.url + this.collection + '/update/' + eventId, eventData)
+  updateEvent(eventId: number, eventData: EventoDTO): Observable<EventoDTO> {
+    return this.http.put<EventoDTO>(environment.url + this.collection + '/update/' + eventId, eventData)
   }
 
   addAlumno(addRequest: AddAlumnoRequest): Observable<Evento> {
@@ -65,6 +65,10 @@ export class EventService {
 
   removeAlumno(removeRequest: RemoveAlumnoRequest): Observable<Evento> {
     return this.http.post<Evento>(`${environment.url}${this.collection}/removeAlumno`, removeRequest);
+  }
+
+  registrarAsistencia(eventId: number, alumnosAsistentesIds: number[]): Observable<void> {
+    return this.http.post<void>(environment.url + this.collection + "/" + eventId + "/asistencia", alumnosAsistentesIds)
   }
 
   deleteEventById(eventId: number): Observable<void> {

@@ -104,16 +104,16 @@ export class ReservaHorarioComponent {
         Swal.fire({
           icon: "success",
           title: "Éxito",
-          text: `Se realizó la reserva exitosamente para el dia `
+          text: `Se realizó la reserva exitosamente para el dia ${response.fecha}`
         })
       },
       error: (err) => {
         Swal.fire({
           icon: "error",
           title: "Error",
-          text: "Ocurrió un error durante la reserva"
+          text: err.error
         })
-        console.error(err)
+        //console.error(err)
       },
       complete: () => {
         this.router.navigate(['auth/horario'])

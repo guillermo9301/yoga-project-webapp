@@ -16,22 +16,12 @@ export class AuthService {
     private collection = 'auth';
 
     currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
-    currentUserData: BehaviorSubject<User> = new BehaviorSubject<User>({
-        token: '',
-        id: 0,
-        nombre: '',
-        apellido_paterno: '',
-        apellido_materno: '',
-        correo: '',
-        rol: ''
-    })
+    currentUserData: BehaviorSubject<User>
 
     constructor(private http: HttpClient, private router: Router) {
-        const userData = sessionStorage.getItem("userData")
-        this.currentUserLoginOn = new BehaviorSubject<boolean>(sessionStorage.getItem("token") != null)
-        if (userData) {
-            this.currentUserData = new BehaviorSubject<User>(JSON.parse(userData))
-        }
+        const userData = sessionStorage.getItem("userData");
+        this.currentUserLoginOn = new BehaviorSubject<boolean>(sessionStorage.getItem("token") != null);
+        this.currentUserData = new BehaviorSubject<User>(userData ? JSON.parse(userData) : this.getEmptyUser());
     }
 
     login(credentials: LoginRequest): Observable<User> {
@@ -105,10 +95,24 @@ export class AuthService {
                     apellido_paterno: '',
                     apellido_materno: '',
                     correo: '',
-                    rol: ''
+                    rol: '',
+                    fecha_registro: ''
                 });
                 this.router.navigateByUrl("/")
             }
         })
+    }
+
+    private getEmptyUser(): User {
+        return {
+            token: '',
+            id: 0,
+            nombre: '',
+            apellido_paterno: '',
+            apellido_materno: '',
+            correo: '',
+            rol: '',
+            fecha_registro: ''
+        };
     }
 }
