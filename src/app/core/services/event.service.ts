@@ -4,8 +4,6 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AddAlumnoRequest, Evento, EventoDTO, CrearEventoRequest, RemoveAlumnoRequest, CrearEventoResponse } from '../interfaces/eventDTO';
 import { AuthService } from './auth.service';
-import { User } from '../interfaces/user';
-import { Usuario } from '../interfaces/users-list';
 
 @Injectable({
   providedIn: 'root'

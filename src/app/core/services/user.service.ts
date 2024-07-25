@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable, catchError, throwError } from "rxjs";
 import { User } from "../interfaces/user";
 import { environment } from "src/environments/environment";
-import { addUsuarioRequest, Usuario } from "../interfaces/users-list";
+import { addUsuarioRequest, UsuarioDTO } from "../interfaces/users-list";
 
 @Injectable({
     providedIn: 'root'
@@ -16,22 +16,22 @@ export class UserService {
 
     }
 
-    getUser(id: number): Observable<Usuario> {
-        return this.http.get<Usuario>(environment.url + this.collection + "/" + id).pipe(
+    getUser(id: number): Observable<UsuarioDTO> {
+        return this.http.get<UsuarioDTO>(environment.url + this.collection + "/" + id).pipe(
             catchError(this.handlerError)
         )
     }
 
-    getAllUsers(): Observable<Usuario[]> {
-        return this.http.get<Usuario[]>(environment.url + this.collection).pipe(
+    getAllUsers(): Observable<UsuarioDTO[]> {
+        return this.http.get<UsuarioDTO[]>(environment.url + this.collection).pipe(
             catchError(this.handlerError)
         )
     }
 
-    updateUser(id: number, data: Usuario): Observable<Usuario> {
+    updateUser(id: number, data: UsuarioDTO): Observable<UsuarioDTO> {
         console.log('ID que recibe el servicio: ' + id)
         console.log('Data que recibe el servicio: ' + JSON.stringify(data))
-        return this.http.put<Usuario>(environment.url + this.collection + "/" + id, data).pipe(
+        return this.http.put<UsuarioDTO>(environment.url + this.collection + "/" + id, data).pipe(
             catchError(this.handlerError)
         )
     }
@@ -47,11 +47,11 @@ export class UserService {
         })
     }
 
-    addUser(data: addUsuarioRequest): Observable<Usuario> {
-        return this.http.post<Usuario>(environment.url + this.collection + "/addUser", data)
+    addUser(data: addUsuarioRequest): Observable<UsuarioDTO> {
+        return this.http.post<UsuarioDTO>(environment.url + this.collection + "/addUser", data)
     }
 
-    getRoles(){
+    getRoles() {
         return this.http.get(environment.url + this.collection + "/allRoles")
     }
 }

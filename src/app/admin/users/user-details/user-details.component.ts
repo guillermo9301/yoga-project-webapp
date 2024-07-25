@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Usuario } from 'src/app/core/interfaces/users-list';
+import { UsuarioDTO } from 'src/app/core/interfaces/users-list';
 import { UserService } from 'src/app/core/services/user.service';
 import Swal from 'sweetalert2';
 
@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class UserDetailsComponent implements OnInit {
     userForm: FormGroup
-    user: Usuario | undefined
+    user: UsuarioDTO | undefined
 
 
     constructor(

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Usuario } from 'src/app/core/interfaces/users-list';
+import { UsuarioDTO } from 'src/app/core/interfaces/users-list';
 import { UserService } from 'src/app/core/services/user.service';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog } from '@angular/material/dialog';
@@ -14,7 +14,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 export class UsersComponent implements OnInit {
 
   faSearch = faSearch
-  usersList: Usuario[] = []
+  usersList: UsuarioDTO[] = []
 
   constructor(private userService: UserService, private authService: AuthService, private dialog: MatDialog) { }
 
