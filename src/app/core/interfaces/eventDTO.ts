@@ -1,4 +1,4 @@
-import { Usuario } from "./users-list"
+import { UsuarioDTO } from "./users-list"
 
 
 export interface CrearEventoRequest {
@@ -35,7 +35,7 @@ export interface Evento {
     horaFin: string,
     capacidad: number,
     cuposDisponibles: number,
-    alumnos: Usuario[]
+    alumnos: UsuarioDTO[]
 }
 
 export interface AddAlumnoRequest {

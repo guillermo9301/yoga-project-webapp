@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Evento } from 'src/app/core/interfaces/eventDTO';
-import { Usuario } from 'src/app/core/interfaces/users-list';
+import { UsuarioDTO } from 'src/app/core/interfaces/users-list';
 import { EventService } from 'src/app/core/services/event.service';
 import Swal from 'sweetalert2';
 
@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class AlumnosListComponent {
   evento!: Evento
-  alumnos: Usuario[] = []
+  alumnos: UsuarioDTO[] = []
 
   eventId!: number;
   selectedAlumnos: Set<number> = new Set<number>();

@@ -5,7 +5,8 @@ export interface SuscriptionDTO {
     id: number,
     fechaInicio: string,
     fechaFin: string,
-    paquete: any
+    paquete: Paquete,
+    estado: string
 }
 
 export interface Suscription {

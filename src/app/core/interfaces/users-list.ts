@@ -2,10 +2,9 @@ export interface Authority {
     authority: string;
 }
 
-export interface Usuario {
+export interface UsuarioDTO {
     id: number;
     correo: string;
-    password: string;
     nombre: string;
     apellido_paterno: string;
     apellido_materno: string;
@@ -15,6 +14,8 @@ export interface Usuario {
     celular: string;
     fecha_registro: string | null;
     rol: string;
+    clasesAsistidas: number;
+    inscripciones: number;
     enabled: boolean;
     accountNonLocked: boolean;
     username: string;

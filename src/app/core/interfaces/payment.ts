@@ -1,4 +1,4 @@
-import { Usuario } from "./users-list";
+import { UsuarioDTO } from "./users-list";
 
 export interface Paquete {
   id: number;
@@ -16,7 +16,7 @@ export interface Payment {
   expiracion: string;
   numTarjeta: string;
   titular: string;
-  usuario: Usuario
+  usuario: UsuarioDTO
 }
 
 export interface PaymentRequest {
